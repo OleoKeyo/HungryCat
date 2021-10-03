@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860762721911490589}
   m_Layer: 0
-  m_Name: CrateSpawnPoint (1)
+  m_Name: CrateSpawnPoint_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311305424905779916}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066526582605467108
 GameObject:
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3401394066928826696}
   m_Layer: 0
-  m_Name: CrateSpawnPoint
+  m_Name: CrateSpawnPoint_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311305424905779916}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977361230357932066
 GameObject:
@@ -151,9 +151,9 @@ Transform:
   - {fileID: 5782598985346393151}
   - {fileID: 6167034100670504325}
   - {fileID: 1531553284176105216}
+  - {fileID: 1247686589621869632}
   - {fileID: 3401394066928826696}
   - {fileID: 1860762721911490589}
-  - {fileID: 1247686589621869632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1247686589621869632}
   m_Layer: 0
-  m_Name: CrateSpawnPoint (2)
+  m_Name: CrateSpawnPoint_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3311305424905779916}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &618084529854077227
 PrefabInstance:
