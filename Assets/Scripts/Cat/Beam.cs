@@ -17,12 +17,12 @@ public class Beam : MonoBehaviour
 
     private bool _triggered;
     private bool readyToAttack;
+    private float _timeForLive = 5f;
 
     private void Awake()
     {
         IsEnable(false);
         _audio = GetComponent<AudioSource>();
-        _audio.Stop();
     }
 
     void Update()
@@ -39,13 +39,20 @@ public class Beam : MonoBehaviour
             _audio.Play();
             StartCoroutine(CountdownToAttack());
         }
+        else
+        {
+            _audio.Stop();
+        }
     }
 
     private IEnumerator CountdownToAttack()
     {
-        
         yield return new WaitForSeconds(countdownToAttack);
         readyToAttack = true;
+        
+        yield return new WaitForSeconds(_timeForLive);
+        readyToAttack = false;
+        IsEnable(false)
     }
 
     private void OnTriggerEnter2D(Collider2D other)
