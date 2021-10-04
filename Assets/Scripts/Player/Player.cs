@@ -5,6 +5,7 @@ using ElementCrate;
 using UnityEditor;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 5f;
@@ -14,11 +15,17 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private ElementInventory _inventory;
 
+    [Header("Music")] 
+    [SerializeField] private AudioClip getFlask;
+
+    private AudioSource _audioSource;
+
     private InputController _inputController;
     
     void Awake()
     {
         _inputController = new InputController();
+        _audioSource = GetComponent<AudioSource>();
     }
     
     private void FixedUpdate()
@@ -76,8 +83,10 @@ public class Player : MonoBehaviour
 
     private void AddElement(Element element)
     {
-        if (_inventory.elements.Count < 2)
+        if (_inventory.elements.Count < 2 && !_inventory.elements.Contains(element))
         {
+            _audioSource.clip = getFlask;
+            _audioSource.Play();
             _inventory.AddElement(element);
         }
     }

@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Beam : MonoBehaviour
 {
     private const string PlayerTag = "Player";
     private const string DoorTag = "Door";
+    private AudioSource _audio;
     
     public float rotationSpeed = 30;
     public float countdownToAttack = 2f;
@@ -19,6 +21,8 @@ public class Beam : MonoBehaviour
     private void Awake()
     {
         IsEnable(false);
+        _audio = GetComponent<AudioSource>();
+        _audio.Stop();
     }
 
     void Update()
@@ -30,12 +34,16 @@ public class Beam : MonoBehaviour
     {
         spriteRenderer.enabled = isEnable;
         boxCollider.enabled = isEnable;
-        if(isEnable)
+        if (isEnable)
+        {
+            _audio.Play();
             StartCoroutine(CountdownToAttack());
+        }
     }
 
     private IEnumerator CountdownToAttack()
     {
+        
         yield return new WaitForSeconds(countdownToAttack);
         readyToAttack = true;
     }
