@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 7
-  _interactionRadius: 1
+  _interactionRadius: 2
   _playerAnimator: {fileID: 290299204226781797}
   _rb: {fileID: 290299204226781799}
   _spriteRenderer: {fileID: 290299204226781792}

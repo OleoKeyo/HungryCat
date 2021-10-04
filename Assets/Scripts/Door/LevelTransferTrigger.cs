@@ -10,7 +10,7 @@ namespace Config
     public string transferTo;
     private bool _triggered;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
       if(_triggered)
         return;
