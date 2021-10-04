@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Cat : MonoBehaviour
 {
+    public BeamWeapon beamWeapon;
+    
     public void EatElements(List<Element> inventoryElements)
     {
         if (inventoryElements.Count > 2) throw new Exception("more than 2 elements");
@@ -18,10 +21,13 @@ public class Cat : MonoBehaviour
         switch(elementType)
         {
             case ElementType.Fire:
+                beamWeapon.EnableFireBeam();
                 break;
             case ElementType.Water:
+                beamWeapon.EnableWaterBeam();
                 break;
             case ElementType.Acid:
+                beamWeapon.EnableAcidBeam();
                 break;
         }
     }
@@ -34,10 +40,15 @@ public class Cat : MonoBehaviour
 
         if (fire && water)
         {
-        }else if (fire && acid)
+            beamWeapon.FireWaterShoot();
+        }
+        else if (fire && acid)
         {
-        }else if (water && acid)
+            beamWeapon.FireAcidShoot();
+        }
+        else if (water && acid)
         {
+            beamWeapon.WaterAcidShoot();
         }
     }
 }

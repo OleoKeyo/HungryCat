@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
             {
                 var cat = collider.GetComponent<Cat>();
                 cat.EatElements(_inventory.elements);
+                _inventory.ClearInventory();
             }
         }
     }

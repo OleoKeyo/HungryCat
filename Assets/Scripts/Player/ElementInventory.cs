@@ -26,4 +26,13 @@ public class ElementInventory : MonoBehaviour
     
     elements.Add(newElement);
   }
+
+  public void ClearInventory()
+  {
+    foreach (Element element in elements)
+    {
+      Destroy(element.gameObject);
+    }
+    elements.Clear();
+  }
 }
