@@ -50,9 +50,9 @@ public class Beam : MonoBehaviour
         yield return new WaitForSeconds(countdownToAttack);
         readyToAttack = true;
         
-        yield return new WaitForSeconds(_timeForLive);
-        readyToAttack = false;
-        IsEnable(false);
+        // yield return new WaitForSeconds(_timeForLive);
+        // readyToAttack = false;
+        // IsEnable(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
