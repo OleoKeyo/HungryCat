@@ -24,8 +24,6 @@ public class Cat : MonoBehaviour
             case ElementType.Acid:
                 break;
         }
-
-        EventManager.OnIncorrectElementGivenEvent?.Invoke(transform);
     }
 
     private void CombineAttack(List<Element> elements)
