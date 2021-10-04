@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cat : MonoBehaviour
 {
+    public BeamWeapon beamWeapon;
+    
     private void CheckElement(ElementType elementType)
     {
         switch(elementType)
