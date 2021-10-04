@@ -11,22 +11,26 @@ public class SceneLoadManager : MonoBehaviour
     [SerializeField] private Image blackWindow;
     private int _currentSceneNumber;
     private float _stepSec = 0.5f;
+    private bool _isLoading;
 
     private void Awake()
     {
         ChangeAlphaForBlack(0);
-        
+        _isLoading = false;
         _currentSceneNumber = -1;
     }
 
     public void LoadScene(int sceneNumber)
     {
-        if (_currentSceneNumber != -1) SceneManager.UnloadSceneAsync(_currentSceneNumber);
-        
-        _currentSceneNumber = sceneNumber;
-        var loader = SceneManager.LoadSceneAsync(sceneNumber, LoadSceneMode.Additive);
+        if(!_isLoading){
+            _isLoading = true;
+            if (_currentSceneNumber != -1) SceneManager.UnloadSceneAsync(_currentSceneNumber);
+            
+            _currentSceneNumber = sceneNumber;
+            var loader = SceneManager.LoadSceneAsync(sceneNumber, LoadSceneMode.Additive);
 
-        StartCoroutine(Loading(loader));
+            StartCoroutine(Loading(loader));
+        }
     }
 
     IEnumerator Loading(AsyncOperation operation)
@@ -42,8 +46,12 @@ public class SceneLoadManager : MonoBehaviour
             
             al = Mathf.Clamp(al, 0f, 1f);
             ChangeAlphaForBlack(al);
-            
-            if (al == 0) yield break;
+
+            if (al == 0f)
+            {
+                _isLoading = false;
+                yield break;
+            }
             yield return new WaitForSeconds(_stepSec);
         }
     }

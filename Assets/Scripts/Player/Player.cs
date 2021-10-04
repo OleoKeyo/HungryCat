@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Music")] 
     [SerializeField] private AudioClip getFlask;
+    [SerializeField] private AudioClip dead;
 
     private AudioSource _audioSource;
 
@@ -89,5 +90,21 @@ public class Player : MonoBehaviour
             _audioSource.Play();
             _inventory.AddElement(element);
         }
+    }
+
+    public void Dead()
+    {
+        StartCoroutine(DeadSound());
+    }
+
+    IEnumerator DeadSound()
+    {
+        _audioSource.clip = dead;
+        _audioSource.Play();
+
+        while (_audioSource.isPlaying) yield return new WaitForEndOfFrame();
+
+        FindObjectOfType<MainMenuControl>().OnGameOver();
+        yield break;
     }
 }
