@@ -6,12 +6,12 @@ public class Element : MonoBehaviour
 {
   public SpriteRenderer spriteRenderer;
   public ElementsConfig elementsConfig;
-  
-  private ElementType _elementType;
+
+  public ElementType ElementType;
 
   public void SetElement(ElementType elementType)
   {
-    _elementType = elementType;
-    spriteRenderer.sprite = elementsConfig.GetElementSprite(_elementType);
+    ElementType = elementType;
+    spriteRenderer.sprite = elementsConfig.GetElementSprite(ElementType);
   }
 }
