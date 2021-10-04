@@ -17,7 +17,7 @@ public class Beam : MonoBehaviour
 
     private bool _triggered;
     private bool readyToAttack;
-    private float _timeForLive = 5f;
+    // private float _timeForLive = 5f;
 
     private void Awake()
     {
