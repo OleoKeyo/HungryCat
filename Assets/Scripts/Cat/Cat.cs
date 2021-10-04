@@ -17,16 +17,10 @@ public class Cat : MonoBehaviour
             case ElementType.FireAcid:
                 break;
         }
-
-        EventManager.OnIncorrectElementGivenEvent?.Invoke(transform);
     }
-
-    private void OnDisable()
-    {
-    }
-
+    
     public void EatElements(List<Element> inventoryElements)
     {
-       
+
     }
 }

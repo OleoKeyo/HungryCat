@@ -23,15 +23,20 @@ public class Player : MonoBehaviour
     
     private void FixedUpdate()
     {
+        Move();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            Interact();
+    }
+
+    private void Move()
+    {
         _inputController.Update();
         Vector2 dir = new Vector2(_inputController.Horizontal, _inputController.Vertical);
         dir = dir.normalized;
-        
+
         _rb.MovePosition(_rb.position + dir * _movementSpeed * Time.fixedDeltaTime);
         _playerAnimator.PlayerMove(dir);
-        
-        if (Input.GetKeyDown(KeyCode.E))
-            Interact();
     }
 
     private void Interact()
@@ -43,7 +48,7 @@ public class Player : MonoBehaviour
         {
             var elementContainer = collider.GetComponent<Crate>();
    
-            if (elementContainer.element != null)
+            if (elementContainer != null)
             {
                 AddElement(elementContainer.element);
             }

@@ -74,6 +74,5 @@ namespace DefaultNamespace.Player
       
       return state;
     }
-    
   }
 }
