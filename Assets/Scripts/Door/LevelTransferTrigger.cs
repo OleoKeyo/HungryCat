@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Config
 {
@@ -7,8 +6,14 @@ namespace Config
   {
     private const string PlayerTag = "Player";
 
-    public string transferTo;
+    public int transferToIndexScene;
     private bool _triggered;
+    private SceneLoadManager _sceneLoad;
+    
+    private void Start()
+    {
+      _sceneLoad = (SceneLoadManager) FindObjectOfType(typeof(SceneLoadManager));
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +23,7 @@ namespace Config
       if (other.CompareTag(PlayerTag))
       {
         _triggered = true;
-        SceneManager.LoadScene(transferTo);
+        _sceneLoad.LoadScene(transferToIndexScene);
       }
     }
   }
