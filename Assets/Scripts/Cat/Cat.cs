@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Cat : MonoBehaviour
 {
-    [SerializeField] ElementType correctElement; // Элемент, который треубет кошка для открытия двери
+    [SerializeField] ElementType correctElement; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     List<IAbility> abilities = new List<IAbility>(); 
 
     void Start()
@@ -26,15 +26,15 @@ public class Cat : MonoBehaviour
         switch(elementType)
         {
             case ElementType.Fire:
-                Debug.Log("Поливаю огнем");
+                Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
                 // abilities.Add(FireAbility)
                 break;
             case ElementType.Water:
-                Debug.Log("Заливаю пол водой");
+                Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
                 // abilities.Add(WaterAbility)
                 break;
-            case ElementType.Air:
-                Debug.Log("Сдуваю героя");
+            case ElementType.Steam:
+                Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
                 // abilities.Add(AirAbility)
                 break;
         }

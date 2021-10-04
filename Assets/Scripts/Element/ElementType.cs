@@ -1,9 +1,10 @@
 public enum ElementType
 { 
-    Fire = (1 << 0),
-    Water = (1 << 1),
-    Acid = (1 << 2),
-    Air = Fire | Water,
-    Oil = Fire | Acid,
-    Lightning = Water | Acid
+    Unknown = 0,
+    Fire = 1,
+    Water = 2,
+    Acid = 3,
+    Steam = 4,
+    Metall = 5,
+    Electro = 6
 }
