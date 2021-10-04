@@ -1,3 +1,4 @@
+using System;
 using Config;
 using UnityEngine;
 
@@ -20,7 +21,12 @@ public class Door : MonoBehaviour
         spriteRenderer.sprite = doorsConfig.GetDoorSprite(element);
     }
 
-    public void CheckAnswer(ElementType elementType)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
+
+    public void CheckElementType(ElementType elementType)
     {
         if (elementType == _elementToOpenDoor)
         {
