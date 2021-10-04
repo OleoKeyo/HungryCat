@@ -21,8 +21,8 @@ public class Beam : MonoBehaviour
 
     private void Awake()
     {
-        IsEnable(false);
         _audio = GetComponent<AudioSource>();
+        IsEnable(false);
     }
 
     void Update()
