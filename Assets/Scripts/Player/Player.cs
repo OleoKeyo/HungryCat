@@ -1,34 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Player;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private float _interactionRadius = 5f;
+    [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private InputController _inputConatroller;
+    private InputController _inputController;
     private ElementInventory _inventory;
-    private Rigidbody2D _rb;
+
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _inputConatroller = new InputController();
+        _inputController = new InputController();
         _inventory = new ElementInventory();
         EventManager.TryToInteractEvent += Interact;
     }
-
-    void Update()
-    {
-        _inputConatroller.Update();
-    }
-
+    
     private void FixedUpdate()
     {
-        Vector2 dir = new Vector2(_inputConatroller.Horizontal, _inputConatroller.Vertical);
+        _inputController.Update();
+        Vector2 dir = new Vector2(_inputController.Horizontal, _inputController.Vertical);
         dir = dir.normalized;
+        
         _rb.MovePosition(_rb.position + dir * _movementSpeed * Time.fixedDeltaTime);
+        _playerAnimator.PlayerMove(dir);
     }
 
     private void Interact()
