@@ -826,10 +826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8328991632312693632, guid: 5885fc70277f4a24e8618945e11720a8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8328991632517121906, guid: 5885fc70277f4a24e8618945e11720a8, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -877,10 +873,6 @@ PrefabInstance:
     - target: {fileID: 8328991632517121908, guid: 5885fc70277f4a24e8618945e11720a8, type: 3}
       propertyPath: m_Name
       value: Cat
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328991632997238512, guid: 5885fc70277f4a24e8618945e11720a8, type: 3}
-      propertyPath: m_Offset.x
-      value: -6.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5885fc70277f4a24e8618945e11720a8, type: 3}
@@ -1175,6 +1167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 290299204226781792, guid: be51a722ab5f849498c7420f0d302f6b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 290299204226781793, guid: be51a722ab5f849498c7420f0d302f6b, type: 3}
       propertyPath: m_RootOrder
       value: 5

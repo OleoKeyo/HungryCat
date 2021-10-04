@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1259144822936780669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6610600188046334898}
+  m_Layer: 7
+  m_Name: SpawnRayShootStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6610600188046334898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259144822936780669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16, y: 1.23, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8328991632517121906}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7115624571805251983
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,10 +303,11 @@ MonoBehaviour:
   acidBeam: {fileID: 7115624571805251979}
   fireBeam: {fileID: 7115624572919819847}
   waterBeam: {fileID: 7115624572851645621}
-  fireWaterShootPrefab: {fileID: 0}
-  fireAcidShootPrefab: {fileID: 0}
-  waterAcidShootPrefab: {fileID: 0}
+  fireWaterShootPrefab: {fileID: 7926744562790940248, guid: 1605e810c1cff0440b4eceb7420a0a31, type: 3}
+  fireAcidShootPrefab: {fileID: 4608023695978714915, guid: 997d74680cbb33441b2c8670f5714c05, type: 3}
+  waterAcidShootPrefab: {fileID: 6445420862422387163, guid: b3682452da7a65249a01c8397b405d62, type: 3}
   targetEffectPrefab: {fileID: 2564022711731852190, guid: d7e17b9233debb746bf367c8b194bdb2, type: 3}
+  spawnShootPoint: {fileID: 6610600188046334898}
 --- !u!1 &7115624572851645609
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -10.47, y: 0.15}
+  m_Offset: {x: -10.74, y: 0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0}
@@ -839,6 +870,7 @@ Transform:
   - {fileID: 8328991632978256407}
   - {fileID: 8328991632312693633}
   - {fileID: 7115624571845879374}
+  - {fileID: 6610600188046334898}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

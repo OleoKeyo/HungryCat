@@ -15,6 +15,8 @@ public class BeamWeapon : MonoBehaviour
 
     public GameObject targetEffectPrefab;
 
+    public Transform spawnShootPoint;
+
     private List<GameObject> _availableShotsPrefab = new List<GameObject>();
     private Player _player;
     private int currentPrefabIndex;
@@ -77,7 +79,9 @@ public class BeamWeapon : MonoBehaviour
     private IEnumerator WaitForSecondsAndShoot(float waitingTime, Vector3 playerPosition, GameObject bullet)
     {
         yield return new WaitForSeconds(waitingTime);
-        Instantiate(bullet, playerPosition, Quaternion.identity);
+        var bulletGo = Instantiate(bullet, spawnShootPoint.position, Quaternion.identity);
+        RayShoot ray = bulletGo.GetComponent<RayShoot>();
+        ray.ShootTowards(spawnShootPoint.position, playerPosition);
     }
 
     public void SetPlayer(Player player)
