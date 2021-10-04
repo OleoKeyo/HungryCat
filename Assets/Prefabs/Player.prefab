@@ -129,6 +129,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 290299204226781792}
   _inventory: {fileID: 8169206870762679525}
   getFlask: {fileID: 8300000, guid: 36dcf142d3323d340b49d38c02e765e5, type: 3}
+  dead: {fileID: 8300000, guid: e15692b12233a164bae61393551d8442, type: 3}
 --- !u!114 &290299204226781797
 MonoBehaviour:
   m_ObjectHideFlags: 0
