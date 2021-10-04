@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public ElementType DoorType;
+    public ElementType ElementToOpenDoor;
+    
     private void Awake()
     {
-        EventManager.OnTransitionToNewStage += SetActive;
     }
 
     private void SetActive()
@@ -17,17 +19,6 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        EventManager.OnCorrectElementGivenEvent += DestroyDoor;
     }
-
-    private void DestroyDoor(Transform obj)
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnCorrectElementGivenEvent -= DestroyDoor;
-        EventManager.OnTransitionToNewStage -= SetActive;
-    }
+    
 }
