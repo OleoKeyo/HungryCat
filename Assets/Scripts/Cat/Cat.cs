@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Cat : MonoBehaviour
 {
-    public BeamWeapon beamWeapon;
+    public void EatElements(List<Element> inventoryElements)
+    {
+        if (inventoryElements.Count > 2) throw new Exception("more than 2 elements");
+        if (inventoryElements.Count == 0) throw new Exception("elements not found");
+
+        if (inventoryElements.Count == 1) ElementAttack(inventoryElements[0].ElementType);
+        else CombineAttack(inventoryElements);
+    }
     
-    private void CheckElement(ElementType elementType)
+    private void ElementAttack(ElementType elementType)
     {
         switch(elementType)
         {
@@ -14,13 +21,23 @@ public class Cat : MonoBehaviour
                 break;
             case ElementType.Water:
                 break;
-            case ElementType.FireAcid:
+            case ElementType.Acid:
                 break;
         }
     }
-    
-    public void EatElements(List<Element> inventoryElements)
-    {
 
+    private void CombineAttack(List<Element> elements)
+    {
+        var fire = elements.Find(x => x.ElementType.Equals(ElementType.Fire));
+        var water = elements.Find(x => x.ElementType.Equals(ElementType.Water));
+        var acid = elements.Find(x => x.ElementType.Equals(ElementType.Acid));
+
+        if (fire && water)
+        {
+        }else if (fire && acid)
+        {
+        }else if (water && acid)
+        {
+        }
     }
 }
