@@ -3,6 +3,7 @@ using System.Collections;
 using Config;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Door : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
@@ -11,8 +12,14 @@ public class Door : MonoBehaviour
     
     private ElementType _elementToOpenDoor;
 
+    [Header("sound properties")]
+    [SerializeField] private AudioClip successSound;
+    [SerializeField] private AudioClip failSound;
+    private AudioSource _audioSource;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         levelTransferTrigger.gameObject.SetActive(false);
     }
 
@@ -27,7 +34,13 @@ public class Door : MonoBehaviour
         if (elementType == _elementToOpenDoor)
         {
             OpenDoor();
+            _audioSource.clip = successSound;
         }
+        else
+        {
+            _audioSource.clip = failSound;
+        }
+        _audioSource.Play();
     }
 
     private void OpenDoor()

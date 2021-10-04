@@ -128,7 +128,7 @@ MonoBehaviour:
   _rb: {fileID: 290299204226781799}
   _spriteRenderer: {fileID: 290299204226781792}
   _inventory: {fileID: 8169206870762679525}
-  getFlask: {fileID: 8300000, guid: 4ca873726993ae548871aed89e1037b7, type: 3}
+  getFlask: {fileID: 8300000, guid: 36dcf142d3323d340b49d38c02e765e5, type: 3}
 --- !u!114 &290299204226781797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
