@@ -1,10 +1,9 @@
 public enum ElementType
-{ 
-    Unknown = 0,
-    Fire = 1,
-    Water = 2,
-    Acid = 3,
-    Steam = 4,
-    Metall = 5,
-    Electro = 6
+{
+    Fire = 2,
+    Water = 3,
+    Acid = 4,
+    FireWater = 5,
+    FireAcid = 6,
+    WaterAcid = 7
 }

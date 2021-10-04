@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Config;
 using UnityEngine;
 
@@ -8,6 +5,7 @@ public class Door : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public LevelTransferTrigger levelTransferTrigger;
+    public DoorsConfig doorsConfig;
     
     private ElementType _elementToOpenDoor;
 
@@ -19,6 +17,7 @@ public class Door : MonoBehaviour
     public void SetRightDoorElement(ElementType element)
     {
         _elementToOpenDoor = element;
+        spriteRenderer.sprite = doorsConfig.GetDoorSprite(element);
     }
 
     public void CheckAnswer(ElementType elementType)

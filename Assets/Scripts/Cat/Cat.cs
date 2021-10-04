@@ -33,7 +33,7 @@ public class Cat : MonoBehaviour
                 Debug.Log("������� ��� �����");
                 // abilities.Add(WaterAbility)
                 break;
-            case ElementType.Steam:
+            case ElementType.FireAcid:
                 Debug.Log("������ �����");
                 // abilities.Add(AirAbility)
                 break;

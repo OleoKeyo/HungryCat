@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     {
         _inputController = new InputController();
         _inventory = new ElementInventory();
-        EventManager.TryToInteractEvent += Interact;
     }
     
     private void FixedUpdate()
@@ -32,56 +31,51 @@ public class Player : MonoBehaviour
         _playerAnimator.PlayerMove(dir);
     }
 
-    private void Interact()
-    {
-        LayerMask mask = LayerMask.GetMask("Interactable");
-        var collider = Physics2D.OverlapCircle(transform.position, _interactionRadius, mask);
-        
-        if (collider != null)
-        {
-            var elementContainer = collider.GetComponent<ElementContainer>();
+   // private void Interact()
+   // {
+   //     LayerMask mask = LayerMask.GetMask("Interactable");
+   //     var collider = Physics2D.OverlapCircle(transform.position, _interactionRadius, mask);
+   //     
+   //     if (collider != null)
+   //     {
+   //         var elementContainer = collider.GetComponent<ElementContainer>();
+   //
+   //         if (elementContainer.element != null)
+   //         {
+   //             AddElement(elementContainer); // Добавляем элемент в "инвентарь"
+   //         }
+   //     }
+   //
+   //     TryToSpendElements(); // Проверяем можно ли сдать элементы кошке
+   // }
 
-            if (elementContainer.element != null)
-            {
-                AddElement(elementContainer); // Добавляем элемент в "инвентарь"
-            }
-        }
+   // private void TryToSpendElements()
+   // {
+   //     if (_inventory.elements.Count > 0)
+   //     {
+   //         ElementType resultElement = 0;
+   // 
+   //         foreach (var item in _inventory.elements)
+   //         {
+   //             resultElement |= item.elementType;
+   //         }
+   //
+   //         LayerMask catMask = LayerMask.GetMask("Cat");
+   //         var collider = Physics2D.OverlapCircle(transform.position, _interactionRadius, catMask);
 
-        TryToSpendElements(); // Проверяем можно ли сдать элементы кошке
-    }
+   //  if (collider != null)
+   //         {
+   //             EventManager.OnCatInteractEvent?.Invoke(resultElement);
+   //         }
+   //     }
+   // }
 
-    private void TryToSpendElements()
-    {
-        if (_inventory.elements.Count > 0)
-        {
-            ElementType resultElement = 0;
-
-            foreach (var item in _inventory.elements)
-            {
-                resultElement |= item.elementType;
-            }
-
-            LayerMask catMask = LayerMask.GetMask("Cat");
-            var collider = Physics2D.OverlapCircle(transform.position, _interactionRadius, catMask);
-
-            if (collider != null)
-            {
-                EventManager.OnCatInteractEvent?.Invoke(resultElement);
-            }
-        }
-    }
-
-    private void AddElement(ElementContainer elementContainer)
-    {
-        if (_inventory.elements.Count < 2)
-        {
-            _inventory.elements.Add(elementContainer.element);
-            EventManager.OnElementAddToInventoryEvent?.Invoke(elementContainer.element.elementSprite);
-        }
-    }
-
-    private void OnDisable()
-    {
-        EventManager.TryToInteractEvent -= Interact;
-    }
+   // private void AddElement(ElementContainer elementContainer)
+   // {
+   //     if (_inventory.elements.Count < 2)
+   //     {
+   //         _inventory.elements.Add(elementContainer.element);
+   //         EventManager.OnElementAddToInventoryEvent?.Invoke(elementContainer.element.elementSprite);
+   //     }
+   // }
 }
