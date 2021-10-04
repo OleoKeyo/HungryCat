@@ -6,6 +6,8 @@ using UnityEngine;
 public class Cat : MonoBehaviour
 {
     public BeamWeapon beamWeapon;
+
+    private Player _player;
     
     public void EatElements(List<Element> inventoryElements)
     {
@@ -40,15 +42,23 @@ public class Cat : MonoBehaviour
 
         if (fire && water)
         {
-            beamWeapon.FireWaterShoot();
+            beamWeapon.AddFireWaterShoot();
         }
         else if (fire && acid)
         {
-            beamWeapon.FireAcidShoot();
+            beamWeapon.AddFireAcidShoot();
         }
         else if (water && acid)
         {
-            beamWeapon.WaterAcidShoot();
+            beamWeapon.AddWaterAcidShoot();
         }
+    }
+
+    public void SetPlayer(Player player)
+    {
+        if(_player!=null)
+            return;
+        _player = player;
+        beamWeapon.SetPlayer(player);
     }
 }

@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
             if (collider != null)
             {
                 var cat = collider.GetComponent<Cat>();
+                cat.SetPlayer(this);
                 cat.EatElements(_inventory.elements);
                 _inventory.ClearInventory();
             }
