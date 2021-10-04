@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class RayShoot : MonoBehaviour
 {
     public Rigidbody2D rigidbody2D;
@@ -8,6 +9,21 @@ public class RayShoot : MonoBehaviour
     public ElementType type;
     private const string PlayerTag = "Player";
     private const string DoorTag = "Door";
+
+    private float _livetime = 10f;
+    private float _livetimeEnd;
+    private AudioSource _audioSource;
+
+    private void Start()
+    {
+        _livetimeEnd = _livetime;
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        _audioSource.Play();
+    }
 
     public void ShootTowards(Vector3 from, Vector3 to)
     {
@@ -17,6 +33,12 @@ public class RayShoot : MonoBehaviour
 
     public void Update()
     {
+        _livetimeEnd -= Time.deltaTime;
+        if (_livetimeEnd <= 0f)
+        {
+            Destroy(this);
+        }
+
         rigidbody2D.velocity = transform.right * speed;
     }
     
@@ -32,7 +54,11 @@ public class RayShoot : MonoBehaviour
         
         if (other.CompareTag(PlayerTag))
         {
+            var player = other.GetComponent<Player>();
+            player.Dead();
             Debug.Log("PlayerHit");
         }
+        
+        Destroy(this);
     }
 }
