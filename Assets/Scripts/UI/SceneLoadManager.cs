@@ -22,6 +22,12 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadScene(int sceneNumber)
     {
+        if (sceneNumber == -5)
+        {
+            FindObjectOfType<MainMenuControl>().OnCatPanel();
+            return;
+        }
+
         if(!_isLoading){
             _isLoading = true;
             if (_currentSceneNumber != -1) SceneManager.UnloadSceneAsync(_currentSceneNumber);
@@ -31,6 +37,12 @@ public class SceneLoadManager : MonoBehaviour
 
             StartCoroutine(Loading(loader));
         }
+    }
+    
+    public void UnloadCurrentScene()
+    {
+        if (_currentSceneNumber != -1) SceneManager.UnloadSceneAsync(_currentSceneNumber);
+        _currentSceneNumber = -1;
     }
 
     IEnumerator Loading(AsyncOperation operation)

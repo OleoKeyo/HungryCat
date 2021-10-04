@@ -11681,6 +11681,10 @@ PrefabInstance:
       propertyPath: transferTo
       value: Level4
       objectReference: {fileID: 0}
+    - target: {fileID: 7757137195545014920, guid: 2b1d728dcd8ed2441836d73120784997, type: 3}
+      propertyPath: transferToIndexScene
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 7757137195545014923, guid: 2b1d728dcd8ed2441836d73120784997, type: 3}
       propertyPath: m_Size.x
       value: 2.01
