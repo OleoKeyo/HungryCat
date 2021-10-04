@@ -12,8 +12,6 @@ public class ElementInventory : MonoBehaviour
 
   public void AddElement(Element element)
   {
-    if(elements.Contains(element))
-      return;
 
     GameObject elementGo;
     if (elements.Count == 0)
