@@ -30,16 +30,14 @@ public class Beam : MonoBehaviour
     {
         spriteRenderer.enabled = isEnable;
         boxCollider.enabled = isEnable;
-        StartCoroutine(CountdownToAttack());
+        if(isEnable)
+            StartCoroutine(CountdownToAttack());
     }
 
     private IEnumerator CountdownToAttack()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(countdownToAttack);
-            readyToAttack = true;
-        }
+        yield return new WaitForSeconds(countdownToAttack);
+        readyToAttack = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,15 +45,14 @@ public class Beam : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.CompareTag(DoorTag) && readyToAttack)
         {
+            var door = other.GetComponent<Door>();
+            door.CheckElementType(type);
             Debug.Log("DoorHit");
         }
         
         if (other.CompareTag(PlayerTag) && readyToAttack)
         {
             Debug.Log("PlayerHit");
-        }        
-        
-        
-        
+        }
     }
 }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8f8b4fcfb4994286da63d21cf06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 40
+  rotationSpeed: 30
   countdownToAttack: 1.5
   spriteRenderer: {fileID: 344774766969066516}
   boxCollider: {fileID: 8328991631833469905}
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8f8b4fcfb4994286da63d21cf06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 40
+  rotationSpeed: 30
   countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572851645620}
   boxCollider: {fileID: 8328991632997238512}
@@ -290,7 +290,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -7.19, y: 0.15}
+  m_Offset: {x: -6.76, y: 0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0}
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad8f8b4fcfb4994286da63d21cf06a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 40
+  rotationSpeed: 30
   countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572919819846}
   boxCollider: {fileID: 8328991632933356574}
@@ -500,7 +500,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 599c8aafb5e2b414fba7090015f9a2cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

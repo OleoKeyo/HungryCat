@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Config;
 using UnityEngine;
 
@@ -20,12 +21,7 @@ public class Door : MonoBehaviour
         _elementToOpenDoor = element;
         spriteRenderer.sprite = doorsConfig.GetDoorSprite(element);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        
-    }
-
+    
     public void CheckElementType(ElementType elementType)
     {
         if (elementType == _elementToOpenDoor)
@@ -36,15 +32,19 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        FadeDoor();
-        levelTransferTrigger.gameObject.SetActive(true);
+        StartCoroutine(FadeDoor());
     }
 
-    private void FadeDoor()
+    private IEnumerator FadeDoor()
     {
-        Color oldColor = spriteRenderer.color;
-        Color newColor = oldColor;
-        newColor.a = 0f;
-        spriteRenderer.color = newColor;
+        while (spriteRenderer.color.a > 0)
+        {
+            Color oldColor = spriteRenderer.color;
+            Color newColor = oldColor;
+            newColor.a -= 0.03f;
+            spriteRenderer.color = newColor;
+            yield return new WaitForSeconds(0.03f);
+            levelTransferTrigger.gameObject.SetActive(true);
+        }
     }
 }

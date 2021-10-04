@@ -17,6 +17,7 @@ public class BeamWeapon : MonoBehaviour
     
     public void FireWaterShoot()
     {
+        
     }
 
     public void FireAcidShoot()
