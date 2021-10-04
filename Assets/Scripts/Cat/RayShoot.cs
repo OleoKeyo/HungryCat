@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class RayShoot : MonoBehaviour
 {
-    public Rigidbody2D rigidbody2D;
+    public Rigidbody2D rbody2D;
     public float speed;
     public ElementType type;
     private const string PlayerTag = "Player";
@@ -39,7 +39,7 @@ public class RayShoot : MonoBehaviour
             Destroy(this);
         }
 
-        rigidbody2D.velocity = transform.right * speed;
+        rbody2D.velocity = transform.right * speed;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
