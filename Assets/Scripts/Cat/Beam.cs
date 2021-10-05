@@ -67,7 +67,7 @@ public class Beam : MonoBehaviour
         
         if (other.CompareTag(PlayerTag) && readyToAttack)
         {
-            var player = other.GetComponent<Player>();
+            var player = other.GetComponent<PlayerView>();
             player.Dead();
             Debug.Log("PlayerHit");
         }

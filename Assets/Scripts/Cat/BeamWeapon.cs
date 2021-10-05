@@ -18,7 +18,7 @@ public class BeamWeapon : MonoBehaviour
     public Transform spawnShootPoint;
 
     private List<GameObject> _availableShotsPrefab = new List<GameObject>();
-    private Player _player;
+    private PlayerView _player;
     private int currentPrefabIndex;
 
     public void EnableAcidBeam() => 
@@ -84,7 +84,7 @@ public class BeamWeapon : MonoBehaviour
         ray.ShootTowards(spawnShootPoint.position, playerPosition);
     }
 
-    public void SetPlayer(Player player)
+    public void SetPlayer(PlayerView player)
     {
         _player = player;
     }

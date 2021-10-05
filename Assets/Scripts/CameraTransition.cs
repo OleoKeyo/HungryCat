@@ -36,7 +36,7 @@ public class CameraTransition : MonoBehaviour
 
             float lerpRatio = currentTime / lerpTime;
 
-            // Разобраться почему так быстро передвигает камеру
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             transform.position = Vector3.Lerp(transform.position, endMarker.position, lerpRatio);
         }
     }

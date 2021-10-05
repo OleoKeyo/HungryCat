@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Config;
 using UnityEngine;
@@ -9,6 +8,8 @@ public class Door : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public LevelTransferTrigger levelTransferTrigger;
     public DoorsConfig doorsConfig;
+    private const string BeamTag = "Beam"; 
+    private const string ShootTag = "Shoot";
     
     private ElementType _elementToOpenDoor;
 
@@ -31,6 +32,7 @@ public class Door : MonoBehaviour
     
     public void CheckElementType(ElementType elementType)
     {
+        Debug.Log($"{elementType.ToString()} {_elementToOpenDoor.ToString()}");
         if (elementType == _elementToOpenDoor)
         {
             OpenDoor();
@@ -58,6 +60,28 @@ public class Door : MonoBehaviour
             spriteRenderer.color = newColor;
             yield return new WaitForSeconds(0.03f);
             levelTransferTrigger.gameObject.SetActive(true);
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(BeamTag))
+        {
+            var beam = other.GetComponent<Beam>();
+            if (beam != null)
+            {
+                CheckElementType(beam.type);
+                return;
+            }
+        }
+        if (other.CompareTag(ShootTag))
+        {
+            
+            var rayShoot = other.GetComponent<RayShoot>();
+            if (rayShoot != null)
+            {
+                CheckElementType(rayShoot.type);
+            }
         }
     }
 }

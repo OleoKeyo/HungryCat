@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace.Player
+﻿namespace Player
 {
   public class PlayerMove
   {

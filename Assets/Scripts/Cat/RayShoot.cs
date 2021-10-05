@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class RayShoot : MonoBehaviour
 {
     public Rigidbody2D rbody2D;
@@ -14,21 +13,22 @@ public class RayShoot : MonoBehaviour
     private float _livetimeEnd;
     private AudioSource _audioSource;
 
-    private void Start()
-    {
-        _livetimeEnd = _livetime;
-        _audioSource = GetComponent<AudioSource>();
-    }
-
+    private Vector3 _shootDir;
+    
     private void OnEnable()
     {
+        rbody2D = GetComponent<Rigidbody2D>();
+        _livetimeEnd = _livetime;
+        _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
     }
 
     public void ShootTowards(Vector3 from, Vector3 to)
     {
         Vector3 shootDir = (to - from).normalized;
+        _shootDir = shootDir;
         transform.right = shootDir;
+        rbody2D.AddForce(shootDir);
     }
 
     public void Update()
@@ -36,10 +36,8 @@ public class RayShoot : MonoBehaviour
         _livetimeEnd -= Time.deltaTime;
         if (_livetimeEnd <= 0f)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
-
-        rbody2D.velocity = transform.right * speed;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -54,11 +52,10 @@ public class RayShoot : MonoBehaviour
         
         if (other.CompareTag(PlayerTag))
         {
-            var player = other.GetComponent<Player>();
+            var player = other.GetComponent<PlayerView>();
             player.Dead();
             Debug.Log("PlayerHit");
         }
         
-        Destroy(this);
     }
 }

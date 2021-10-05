@@ -7,7 +7,7 @@ public class Cat : MonoBehaviour
 {
     public BeamWeapon beamWeapon;
 
-    private Player _player;
+    private PlayerView _player;
     
     public void EatElements(List<Element> inventoryElements)
     {
@@ -54,7 +54,7 @@ public class Cat : MonoBehaviour
         }
     }
 
-    public void SetPlayer(Player player)
+    public void SetPlayer(PlayerView player)
     {
         if(_player!=null)
             return;
