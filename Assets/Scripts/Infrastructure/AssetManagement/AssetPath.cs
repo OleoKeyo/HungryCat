@@ -6,5 +6,6 @@
     public const string CatPath = "Cat/Cat";
     public const string CratePath = "Crate/Crate";
     public const string DoorPath = "Door/Door";
+    public const string StartMenuPath = "UI/StartMenu";
   }
 }

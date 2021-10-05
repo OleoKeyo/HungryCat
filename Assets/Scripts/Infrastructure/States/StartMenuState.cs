@@ -1,17 +1,18 @@
 ﻿using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
-using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
 {
-  public class LoadLevelState : IPayloadedState<string>
+  public class StartMenuState : IState
   {
+    private const string StartMenuScene = "StartMenu";
+    
     private readonly GameStateMachine _gameStateMachine;
     private readonly SceneLoader _sceneLoader;
     private readonly LoadingCurtain _curtain;
     private readonly IGameFactory _gameFactory;
     
-    public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory)
+    public StartMenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory)
     {
       _gameStateMachine = gameStateMachine;
       _sceneLoader = sceneLoader;
@@ -19,19 +20,19 @@ namespace AlchemyCat.Infrastructure.States
       _gameFactory = gameFactory;
     }
 
-    public void Enter(string sceneName)
+    public void Enter()
     {
-      _curtain.Show();
-      _sceneLoader.Load(sceneName, OnLoaded);
+      InitMenu();
+      _curtain.Hide();
     }
     
-    public void Exit() =>
-      _curtain.Hide();
-
-    private void OnLoaded()
+    private void InitMenu()
     {
-      _gameStateMachine.Enter<GameLoopState>();
+      _gameFactory.CreateStartMenu();
     }
 
+    public void Exit()
+    {
+    }
   }
 }

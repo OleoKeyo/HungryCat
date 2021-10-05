@@ -1,4 +1,5 @@
-﻿using AlchemyCat.Infrastructure.AssetManagement;
+﻿using System;
+using AlchemyCat.Infrastructure.AssetManagement;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Services.Input;
@@ -7,9 +8,10 @@ using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
 {
-  public class BootstrapState : IState
+  public class BootstrapState : IPayloadedState<string>
   {
     private const string Initial = "Initial";
+    
     private readonly GameStateMachine _stateMachine;
     private readonly SceneLoader _sceneLoader;
     private readonly ServiceContainer _services;
@@ -30,7 +32,8 @@ namespace AlchemyCat.Infrastructure.States
       _services.RegisterSingle<IAssetProvider>(new AssetProvider());
       _services.RegisterSingle<IGameFactory>(new GameFactory(
         _services.Resolve<IAssetProvider>(),
-        _services.Resolve<IInputService>()));
+        _services.Resolve<IInputService>(),
+        _services.Resolve<IGameStateMachine>()));
     }
 
     private IInputService RegisterInputService()
@@ -40,14 +43,20 @@ namespace AlchemyCat.Infrastructure.States
       return new MobileInputService();
     }
 
-    public void Enter()
+    public void Enter(string sceneName)
     {
-      _sceneLoader.Load(Initial, onLoaded: EnterLoadLevel);
+      if (sceneName == Initial)
+        _sceneLoader.Load(sceneName, LoadStartMenu);
+      else
+        _sceneLoader.Load(sceneName, () => EnterLoadLevel(sceneName));
     }
 
-    private void EnterLoadLevel()
-    {
-    }
+    private void EnterLoadLevel(string sceneName) =>
+      _stateMachine.Enter<LoadLevelState, string>(sceneName);
+
+    private void LoadStartMenu() =>
+      _stateMachine.Enter<StartMenuState>();
+
 
     public void Exit(){}
     

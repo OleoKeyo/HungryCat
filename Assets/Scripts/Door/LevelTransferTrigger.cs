@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using AlchemyCat.Infrastructure.States;
+using UnityEngine;
 
 namespace Config
 {
@@ -6,24 +7,25 @@ namespace Config
   {
     private const string PlayerTag = "Player";
 
-    public int transferToIndexScene;
+    public string TransferTo;
+    private IGameStateMachine _stateMachine;
     private bool _triggered;
-    private SceneLoadManager _sceneLoad;
     
-    private void Start()
+    public void Constuct(IGameStateMachine stateMachine, string transferTo)
     {
-      _sceneLoad = (SceneLoadManager) FindObjectOfType(typeof(SceneLoadManager));
+      _stateMachine = stateMachine;
+      TransferTo = transferTo;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
-      if(_triggered)
+      if (_triggered)
         return;
 
       if (other.CompareTag(PlayerTag))
       {
+        _stateMachine.Enter<LoadLevelState, string>(TransferTo);
         _triggered = true;
-        _sceneLoad.LoadScene(transferToIndexScene);
       }
     }
   }

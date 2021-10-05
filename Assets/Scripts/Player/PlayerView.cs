@@ -102,7 +102,7 @@ public class PlayerView : MonoBehaviour
 
         while (_audioSource.isPlaying) yield return new WaitForEndOfFrame();
 
-        FindObjectOfType<MainMenuControl>().OnGameOver();
+        //FindObjectOfType<MainMenuControl>().OnGameOver();
         yield break;
     }
 }

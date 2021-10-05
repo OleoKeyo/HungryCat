@@ -5,7 +5,7 @@ namespace AlchemyCat.Infrastructure.SceneManagement
 {
   public class LoadingCurtain : MonoBehaviour
   {
-    public CanvasGroup Curtain;
+    public CanvasGroup curtain;
     private Coroutine _fadeCoroutine;
     
     public void Show()
@@ -28,7 +28,7 @@ namespace AlchemyCat.Infrastructure.SceneManagement
 
     private void Start()
     {
-      Curtain.alpha = 1;
+      curtain.alpha = 1;
     }
 
     private void StopPreviousFade()
@@ -41,9 +41,9 @@ namespace AlchemyCat.Infrastructure.SceneManagement
 
     private IEnumerator DoFadeIn()
     {
-      while (Curtain.alpha > 0)
+      while (curtain.alpha > 0)
       {
-        Curtain.alpha -= 0.03f;
+        curtain.alpha -= 0.03f;
         yield return new WaitForSeconds(0.03f);
       }
       gameObject.SetActive(false);
@@ -51,9 +51,9 @@ namespace AlchemyCat.Infrastructure.SceneManagement
     
     private IEnumerator DoFadeOut()
     {
-      while (Curtain.alpha < 1)
+      while (curtain.alpha < 1)
       {
-        Curtain.alpha += 0.03f;
+        curtain.alpha += 0.03f;
         yield return new WaitForSeconds(0.03f);
       }
     }

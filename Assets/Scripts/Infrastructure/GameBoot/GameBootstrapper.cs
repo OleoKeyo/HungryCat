@@ -2,6 +2,7 @@
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.States;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AlchemyCat.Infrastructure.GameBoot
 {
@@ -14,7 +15,8 @@ namespace AlchemyCat.Infrastructure.GameBoot
     private void Awake()
     {
       _game = new Game(this, Instantiate(CurtainPrefab));
-      _game.StateMachine.Enter<BootstrapState>();
+      string sceneName = SceneManager.GetActiveScene().name;
+      _game.StateMachine.Enter<BootstrapState, string>(sceneName);
       
       DontDestroyOnLoad(this);
     }

@@ -16,8 +16,8 @@ namespace AlchemyCat.Infrastructure.States
       _states = new Dictionary<Type, IExitableState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain,
-          services.Resolve<IGameFactory>()),
+        [typeof(StartMenuState)] = new StartMenuState(this, sceneLoader, curtain, services.Resolve<IGameFactory>()),
+        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Resolve<IGameFactory>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }
