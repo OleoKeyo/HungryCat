@@ -44,7 +44,7 @@ namespace AlchemyCat.Infrastructure.SceneManagement
       while (curtain.alpha > 0)
       {
         curtain.alpha -= 0.03f;
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSecondsRealtime(0.03f);
       }
       gameObject.SetActive(false);
     }
@@ -54,7 +54,7 @@ namespace AlchemyCat.Infrastructure.SceneManagement
       while (curtain.alpha < 1)
       {
         curtain.alpha += 0.03f;
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSecondsRealtime(0.03f);
       }
     }
   }
