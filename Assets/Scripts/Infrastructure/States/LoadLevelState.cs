@@ -3,6 +3,7 @@ using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.StaticData;
+using LevelGeneration;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
@@ -14,14 +15,22 @@ namespace AlchemyCat.Infrastructure.States
     private readonly LoadingCurtain _curtain;
     private readonly IGameFactory _gameFactory;
     private readonly IStaticDataService _staticDataService;
+    private readonly ILevelGenerationService _levelGenerationService;
     
-    public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain curtain, IGameFactory gameFactory, IStaticDataService staticDataService)
+    public LoadLevelState(
+      GameStateMachine gameStateMachine, 
+      SceneLoader sceneLoader, 
+      LoadingCurtain curtain, 
+      IGameFactory gameFactory, 
+      IStaticDataService staticDataService,
+      ILevelGenerationService levelGenerationService)
     {
       _gameStateMachine = gameStateMachine;
       _sceneLoader = sceneLoader;
       _curtain = curtain;
       _gameFactory = gameFactory;
       _staticDataService = staticDataService;
+      _levelGenerationService = levelGenerationService;
     }
 
     public void Enter(string sceneName)
@@ -44,8 +53,16 @@ namespace AlchemyCat.Infrastructure.States
       LevelStaticData levelData = _staticDataService.ForLevel(sceneName);
       GameObject player = _gameFactory.CreatePlayer(levelData.initialPlayerPosition);
       GameObject cat = _gameFactory.CreateCat(levelData.catPosition);
-      GameObject door = _gameFactory.CreateDoor(levelData.doorPosition);
-      GameObject levelTransformTrigger = _gameFactory.CreateLevelTransformTrigger(levelData.levelTransferData);
+      GeneratedElements generatedElements =_levelGenerationService.Generate(levelData);
+
+      for (int i = 0; i < levelData.crateSpawnerPositions.Count; i++)
+      {
+        Vector2 cratePosition = levelData.crateSpawnerPositions[i];
+        ElementType crateElement = generatedElements.elements[i];
+        _gameFactory.CreateCrate(cratePosition, crateElement);
+      }
+      GameObject door = _gameFactory.CreateDoor(levelData.doorPosition, levelData.levelTransferData, generatedElements.winnerType);
+      
     }
   }
 }

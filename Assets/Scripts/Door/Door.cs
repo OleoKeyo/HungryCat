@@ -1,5 +1,7 @@
 using System.Collections;
+using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.Services.StaticData;
+using AlchemyCat.StaticData;
 using Config;
 using UnityEngine;
 
@@ -17,21 +19,34 @@ public class Door : MonoBehaviour
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
     private AudioSource _audioSource;
-    
+    private LevelTransferData _levelTransferData;
+    private IGameFactory _gameFactory;
+    private bool _isOpened;
 
+    
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void SetRightDoorElement(ElementType element)
+    public void Construct(LevelTransferData levelTransferData, IGameFactory gameFactory, ElementType elementType)
+    {
+        _gameFactory = gameFactory;
+        _levelTransferData = levelTransferData;
+        SetRightDoorElement(elementType);
+    }
+
+    private void SetRightDoorElement(ElementType element)
     {
         _elementToOpenDoor = element;
         spriteRenderer.sprite = doorsConfig.GetDoorSprite(element);
     }
-    
+
     public void CheckElementType(ElementType elementType)
     {
+        if(_isOpened)
+            return;
+        
         Debug.Log($"{elementType.ToString()} {_elementToOpenDoor.ToString()}");
         if (elementType == _elementToOpenDoor)
         {
@@ -47,6 +62,7 @@ public class Door : MonoBehaviour
 
     private void OpenDoor()
     {
+        _isOpened = true;
         StartCoroutine(FadeDoor());
     }
 
@@ -60,10 +76,14 @@ public class Door : MonoBehaviour
             spriteRenderer.color = newColor;
             yield return new WaitForSeconds(0.03f);
         }
+        _gameFactory.CreateLevelTransformTrigger(_levelTransferData);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(_isOpened)
+            return;
+        
         if (other.CompareTag(BeamTag))
         {
             var beam = other.GetComponent<Beam>();

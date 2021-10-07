@@ -1,34 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlchemyCat.StaticData;
 using UnityEngine;
 using Random = System.Random;
 
 namespace LevelGeneration
 {
-  public class LevelGeneration : MonoBehaviour
+  public class LevelGenerationService : ILevelGenerationService
   {
     private const int SimpleElementsCount = 3;
-    public CratesContainer container;
-    public Door door;
-
+    
     private Random _random;
     private Array _elementsValues;
     private List<ElementType> _generatedElements = new List<ElementType>();
     
-    public void Awake()
+    public LevelGenerationService()
     {
       int seed = (int)DateTime.Now.Ticks;
       _random = new Random(seed);
       _elementsValues = Enum.GetValues(typeof(ElementType));
-      
-      int neededElementsCount = container.crates.Count;
+    }
+
+    public GeneratedElements Generate(LevelStaticData levelStaticData)
+    {
+      int neededElementsCount = levelStaticData.crateSpawnerPositions.Count;
       while (_generatedElements.Count != neededElementsCount)
       {
         _generatedElements.Add(GetRandomElement());
       }
       ElementType winnerType = GetWinnerElement();
-      door.SetRightDoorElement(winnerType);
-      container.SetElements(_generatedElements);
+
+      return new GeneratedElements(_generatedElements, winnerType);
     }
 
     private ElementType GetWinnerElement()

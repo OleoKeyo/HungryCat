@@ -5,6 +5,7 @@ using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Services.Input;
 using Infrastructure.Services.AllServices;
+using LevelGeneration;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
@@ -37,6 +38,7 @@ namespace AlchemyCat.Infrastructure.States
         _services.Resolve<IAssetProvider>(),
         _services.Resolve<IInputService>(),
         _services.Resolve<IGameStateMachine>()));
+      _services.RegisterSingle<ILevelGenerationService>(new LevelGenerationService());
     }
 
     private void RegisterStaticData()

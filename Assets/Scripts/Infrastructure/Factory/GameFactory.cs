@@ -1,9 +1,11 @@
-﻿using AlchemyCat.Infrastructure.AssetManagement;
+﻿using System.Linq.Expressions;
+using AlchemyCat.Infrastructure.AssetManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Infrastructure.States;
 using AlchemyCat.Services.Input;
 using AlchemyCat.UI;
 using Config;
+using ElementCrate;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.Factory
@@ -31,9 +33,15 @@ namespace AlchemyCat.Infrastructure.Factory
       return Instantiate(AssetPath.CatPath, at);
     }
 
-    public GameObject CreateDoor(Vector2 at)
+    public GameObject CreateDoor(
+      Vector2 at, 
+      LevelTransferData levelTransferData,
+      ElementType winnerType)
     {
-      return Instantiate(AssetPath.DoorPath, at);
+      GameObject doorGo = Instantiate(AssetPath.DoorPath, at);
+      Door door = doorGo.GetComponent<Door>();
+      door.Construct(levelTransferData, this, winnerType);
+      return doorGo;
     }
 
     public GameObject CreateLevelTransformTrigger(LevelTransferData transferData)
@@ -44,9 +52,11 @@ namespace AlchemyCat.Infrastructure.Factory
       return levelTransferGo;
     }
 
-    public GameObject CreateCrate(Vector2 at)
+    public void CreateCrate(Vector2 at, ElementType element)
     {
-      return Instantiate(AssetPath.CatPath, at);
+      GameObject crateGo = Instantiate(AssetPath.CratePath, at);
+      Crate crate = crateGo.GetComponent<Crate>();
+      crate.SetElement(element);
     }
 
     public void CreateStartMenu()
