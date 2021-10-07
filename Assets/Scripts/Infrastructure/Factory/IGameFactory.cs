@@ -1,4 +1,5 @@
-﻿using AlchemyCat.UI;
+﻿using AlchemyCat.Infrastructure.Services.StaticData;
+using AlchemyCat.UI;
 using Infrastructure.Services.AllServices;
 using UnityEngine;
 
@@ -11,5 +12,6 @@ namespace AlchemyCat.Infrastructure.Factory
     GameObject CreateCrate(Vector2 at);
     void CreateStartMenu();
     GameObject CreateDoor(Vector2 at);
+    GameObject CreateLevelTransformTrigger(LevelTransferData transferData);
   }
 }

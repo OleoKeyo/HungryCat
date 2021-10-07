@@ -1344,6 +1344,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3201007540256614500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2392369502679348832, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_Name
+      value: LevelTransformMarker
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1620672
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874179942679507419, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90048ffb4b5614345a13b8679e5adbd0, type: 3}
 --- !u!1001 &3311305423764427151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1626,6 +1683,10 @@ PrefabInstance:
     - target: {fileID: 2645449919762835842, guid: 47552161e6b57424abd9847a485f18f2, type: 3}
       propertyPath: m_Name
       value: DoorSpawnMarker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840207038061035928, guid: 47552161e6b57424abd9847a485f18f2, type: 3}
+      propertyPath: transferTo
+      value: Level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47552161e6b57424abd9847a485f18f2, type: 3}

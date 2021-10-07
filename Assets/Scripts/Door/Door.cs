@@ -1,4 +1,5 @@
 using System.Collections;
+using AlchemyCat.Infrastructure.Services.StaticData;
 using Config;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public LevelTransferTrigger levelTransferTrigger;
     public DoorsConfig doorsConfig;
     private const string BeamTag = "Beam"; 
     private const string ShootTag = "Shoot";
@@ -17,11 +17,11 @@ public class Door : MonoBehaviour
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
     private AudioSource _audioSource;
+    
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        levelTransferTrigger.gameObject.SetActive(false);
     }
 
     public void SetRightDoorElement(ElementType element)
@@ -59,7 +59,6 @@ public class Door : MonoBehaviour
             newColor.a -= 0.03f;
             spriteRenderer.color = newColor;
             yield return new WaitForSeconds(0.03f);
-            levelTransferTrigger.gameObject.SetActive(true);
         }
     }
     

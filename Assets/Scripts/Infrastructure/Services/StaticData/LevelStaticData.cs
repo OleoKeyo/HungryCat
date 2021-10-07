@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AlchemyCat.Infrastructure.Services.StaticData;
 using UnityEngine;
 
 namespace AlchemyCat.StaticData
@@ -9,7 +10,8 @@ namespace AlchemyCat.StaticData
     public string levelKey;
     public List<Vector2> crateSpawnerPositions;
     public Vector2 initialPlayerPosition;
-    public Vector2 initialCatPosition;
-    public Vector2 initialDoorPosition;
+    public Vector2 catPosition;
+    public Vector2 doorPosition;
+    public LevelTransferData levelTransferData;
   }
 }

@@ -15,5 +15,11 @@ namespace AlchemyCat.Infrastructure.AssetManagement
       GameObject prefab = Resources.Load<GameObject>(path);
       return Object.Instantiate(prefab, spawnPoint, Quaternion.identity);
     }
+
+    public GameObject Instantiate(string path, Vector3 spawnPoint, Quaternion quaternion)
+    {
+      GameObject prefab = Resources.Load<GameObject>(path);
+      return Object.Instantiate(prefab, spawnPoint, quaternion);
+    }
   }
 }

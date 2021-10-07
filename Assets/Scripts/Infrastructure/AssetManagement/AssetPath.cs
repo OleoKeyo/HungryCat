@@ -7,5 +7,6 @@
     public const string CratePath = "Crate/Crate";
     public const string DoorPath = "Door/Door";
     public const string StartMenuPath = "UI/StartMenu";
+    public const string LevelTransformTrigger = "LevelTransferTrigger/LevelTransferTrigger";
   }
 }

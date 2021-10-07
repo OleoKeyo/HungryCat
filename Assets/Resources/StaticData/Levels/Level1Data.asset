@@ -16,5 +16,9 @@ MonoBehaviour:
   crateSpawnerPositions:
   - {x: -14.95, y: -4.28}
   initialPlayerPosition: {x: -10.12, y: -2.25}
-  initialCatPosition: {x: -1.96, y: -2.43}
-  initialDoorPosition: {x: 11.99, y: -3.02}
+  catPosition: {x: -1.96, y: -2.43}
+  doorPosition: {x: 11.99, y: -3.02}
+  levelTransferData:
+    position: {x: 9.36, y: -3.02}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    transferTo: Level2

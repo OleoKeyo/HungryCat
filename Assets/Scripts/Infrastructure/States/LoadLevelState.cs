@@ -1,4 +1,5 @@
-﻿using AlchemyCat.Infrastructure.Factory;
+﻿using System.Linq.Expressions;
+using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.StaticData;
@@ -42,8 +43,9 @@ namespace AlchemyCat.Infrastructure.States
     {
       LevelStaticData levelData = _staticDataService.ForLevel(sceneName);
       GameObject player = _gameFactory.CreatePlayer(levelData.initialPlayerPosition);
-      GameObject cat = _gameFactory.CreateCat(levelData.initialCatPosition);
-      GameObject door = _gameFactory.CreateDoor(levelData.initialDoorPosition);
+      GameObject cat = _gameFactory.CreateCat(levelData.catPosition);
+      GameObject door = _gameFactory.CreateDoor(levelData.doorPosition);
+      GameObject levelTransformTrigger = _gameFactory.CreateLevelTransformTrigger(levelData.levelTransferData);
     }
   }
 }

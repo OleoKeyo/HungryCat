@@ -1,7 +1,9 @@
 ﻿using AlchemyCat.Infrastructure.AssetManagement;
+using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Infrastructure.States;
 using AlchemyCat.Services.Input;
 using AlchemyCat.UI;
+using Config;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.Factory
@@ -34,6 +36,14 @@ namespace AlchemyCat.Infrastructure.Factory
       return Instantiate(AssetPath.DoorPath, at);
     }
 
+    public GameObject CreateLevelTransformTrigger(LevelTransferData transferData)
+    {
+      GameObject levelTransferGo = Instantiate(AssetPath.LevelTransformTrigger, transferData.position, transferData.rotation);
+      LevelTransferTrigger transferTrigger = levelTransferGo.GetComponent<LevelTransferTrigger>();
+      transferTrigger.TransferTo = transferData.transferTo;
+      return levelTransferGo;
+    }
+
     public GameObject CreateCrate(Vector2 at)
     {
       return Instantiate(AssetPath.CatPath, at);
@@ -46,16 +56,22 @@ namespace AlchemyCat.Infrastructure.Factory
       startMenu.Construct(_gameStateMachine);
     }
 
+    private GameObject Instantiate(string prefabPath, Vector2 position, Quaternion rotation)
+    {
+      GameObject gameObject = _assets.Instantiate(prefabPath, position, rotation);
+      return gameObject;
+    }
+
     private GameObject Instantiate(string prefabPath, Vector2 position)
     {
-      GameObject heroGameObject = _assets.Instantiate(prefabPath, position);
-      return heroGameObject;
+      GameObject gameObject = _assets.Instantiate(prefabPath, position);
+      return gameObject;
     }
 
     private GameObject Instantiate(string prefabPath)
     {
-      GameObject heroGameObject = _assets.Instantiate(prefabPath);
-      return heroGameObject;
+      GameObject gameObject = _assets.Instantiate(prefabPath);
+      return gameObject;
     }
   }
 }

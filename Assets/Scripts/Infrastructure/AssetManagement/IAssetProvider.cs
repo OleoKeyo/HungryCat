@@ -7,5 +7,6 @@ namespace AlchemyCat.Infrastructure.AssetManagement
   {
     GameObject Instantiate(string path);
     GameObject Instantiate(string path, Vector3 spawnPoint);
+    GameObject Instantiate(string path, Vector3 spawnPoint, Quaternion quaternion);
   }
 }
