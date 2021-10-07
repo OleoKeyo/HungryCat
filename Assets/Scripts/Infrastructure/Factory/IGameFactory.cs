@@ -10,5 +10,6 @@ namespace AlchemyCat.Infrastructure.Factory
     GameObject CreateCat(Vector2 at);
     GameObject CreateCrate(Vector2 at);
     void CreateStartMenu();
+    GameObject CreateDoor(Vector2 at);
   }
 }

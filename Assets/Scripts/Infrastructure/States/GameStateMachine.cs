@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
+using AlchemyCat.Infrastructure.Services.StaticData;
 using Infrastructure.Services.AllServices;
 
 namespace AlchemyCat.Infrastructure.States
@@ -17,7 +18,7 @@ namespace AlchemyCat.Infrastructure.States
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
         [typeof(StartMenuState)] = new StartMenuState(this, sceneLoader, curtain, services.Resolve<IGameFactory>()),
-        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Resolve<IGameFactory>()),
+        [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, curtain, services.Resolve<IGameFactory>(), services.Resolve<IStaticDataService>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }

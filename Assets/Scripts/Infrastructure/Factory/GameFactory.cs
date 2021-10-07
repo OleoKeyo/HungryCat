@@ -29,6 +29,11 @@ namespace AlchemyCat.Infrastructure.Factory
       return Instantiate(AssetPath.CatPath, at);
     }
 
+    public GameObject CreateDoor(Vector2 at)
+    {
+      return Instantiate(AssetPath.DoorPath, at);
+    }
+
     public GameObject CreateCrate(Vector2 at)
     {
       return Instantiate(AssetPath.CatPath, at);

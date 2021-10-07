@@ -2,6 +2,7 @@
 using AlchemyCat.Infrastructure.AssetManagement;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
+using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Services.Input;
 using Infrastructure.Services.AllServices;
 using UnityEngine;
@@ -27,6 +28,8 @@ namespace AlchemyCat.Infrastructure.States
 
     private void RegisterServices()
     {
+      RegisterStaticData();
+      
       _services.RegisterSingle<IGameStateMachine>(_stateMachine);
       _services.RegisterSingle<IInputService>(RegisterInputService());
       _services.RegisterSingle<IAssetProvider>(new AssetProvider());
@@ -34,6 +37,13 @@ namespace AlchemyCat.Infrastructure.States
         _services.Resolve<IAssetProvider>(),
         _services.Resolve<IInputService>(),
         _services.Resolve<IGameStateMachine>()));
+    }
+
+    private void RegisterStaticData()
+    {
+      IStaticDataService staticDataService = new StaticDataService();
+      staticDataService.Load();
+      _services.RegisterSingle<IStaticDataService>(staticDataService);
     }
 
     private IInputService RegisterInputService()
