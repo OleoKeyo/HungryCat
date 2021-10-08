@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rbody2D: {fileID: 0}
   speed: 4
-  type: 7
+  type: 6
 --- !u!212 &5288698248548022024
 SpriteRenderer:
   m_ObjectHideFlags: 0
