@@ -1688,5 +1688,9 @@ PrefabInstance:
       propertyPath: transferTo
       value: Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 8840207038061035928, guid: 47552161e6b57424abd9847a485f18f2, type: 3}
+      propertyPath: rightElementForOpen
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47552161e6b57424abd9847a485f18f2, type: 3}

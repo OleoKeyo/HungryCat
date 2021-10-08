@@ -11,7 +11,7 @@ namespace AlchemyCat.StaticData
     public List<Vector2> crateSpawnerPositions;
     public Vector2 initialPlayerPosition;
     public Vector2 catPosition;
-    public Vector2 doorPosition;
+    public DoorStaticData doorData;
     public LevelTransferData levelTransferData;
   }
 }

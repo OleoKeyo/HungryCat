@@ -26,19 +26,26 @@ namespace AlchemyCat.Editor
             .ToList();
 
         levelData.catPosition = FindObjectOfType<CatSpawnMarker>().GetComponent<Transform>().position;
-        levelData.doorPosition = FindObjectOfType<DoorSpawnMarker>().GetComponent<Transform>().position;
-        levelData.levelTransferData = LevelTransferData();
+        levelData.doorData = CollectDoorStaticData();
+        levelData.levelTransferData = CollectLevelTransferData();
         levelData.initialPlayerPosition = FindObjectOfType<PlayerSpawnMarker>().GetComponent<Transform>().position;
       }
       
       EditorUtility.SetDirty(target);
     }
 
-    private LevelTransferData LevelTransferData()
+    private LevelTransferData CollectLevelTransferData()
     {
-      var marker = FindObjectOfType<LevelTransferMarker>();
-      var markerTransform = marker.GetComponent<Transform>();
+      LevelTransferMarker marker = FindObjectOfType<LevelTransferMarker>();
+      Transform markerTransform = marker.GetComponent<Transform>();
       return new LevelTransferData(markerTransform.position, markerTransform.rotation, marker.transferTo);
+    }
+
+    private DoorStaticData CollectDoorStaticData()
+    {
+      DoorSpawnMarker marker = FindObjectOfType<DoorSpawnMarker>();
+      Vector2 position = marker.GetComponent<Transform>().position;
+      return new DoorStaticData(marker.rightElementForOpen, position);
     }
   }
 }

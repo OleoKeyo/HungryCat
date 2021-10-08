@@ -15,13 +15,13 @@ MonoBehaviour:
   doors:
   - rightElementForOpen: 4
     sprite: {fileID: 21300000, guid: 3a49711ce704a8c45b61744b1827cf94, type: 3}
-  - rightElementForOpen: 3
-    sprite: {fileID: 21300000, guid: d61e303969024d148a01e89529e3eaf2, type: 3}
   - rightElementForOpen: 2
+    sprite: {fileID: 21300000, guid: d61e303969024d148a01e89529e3eaf2, type: 3}
+  - rightElementForOpen: 1
     sprite: {fileID: 21300000, guid: 09fd8638252d7794b916e3e635cf55d5, type: 3}
-  - rightElementForOpen: 6
-    sprite: {fileID: 21300000, guid: c82c8ab72b0de6a458400dd30b645088, type: 3}
-  - rightElementForOpen: 7
-    sprite: {fileID: 21300000, guid: 9a6b2c21f84ccf644b6498c91b8c807a, type: 3}
   - rightElementForOpen: 5
+    sprite: {fileID: 21300000, guid: c82c8ab72b0de6a458400dd30b645088, type: 3}
+  - rightElementForOpen: 6
+    sprite: {fileID: 21300000, guid: 9a6b2c21f84ccf644b6498c91b8c807a, type: 3}
+  - rightElementForOpen: 3
     sprite: {fileID: 21300000, guid: eb9690f7425b71041a0b59d54be18686, type: 3}

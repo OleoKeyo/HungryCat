@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ElementsConfig
   m_EditorClassIdentifier: 
   elements:
-  - type: 2
+  - type: 1
     sprite: {fileID: 21300000, guid: 80973fccb86c26a46895fb4877bcb845, type: 3}
-  - type: 3
+  - type: 2
     sprite: {fileID: 21300000, guid: f0c5769ff5b467148808ea24c7ba5d1f, type: 3}
   - type: 4
     sprite: {fileID: 21300000, guid: ec4196e12af19b741be58102abb7367f, type: 3}

@@ -358,7 +358,7 @@ MonoBehaviour:
   countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572851645620}
   boxCollider: {fileID: 8328991632997238512}
-  type: 3
+  type: 1
 --- !u!212 &7115624572851645620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ MonoBehaviour:
   countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572919819846}
   boxCollider: {fileID: 8328991632933356574}
-  type: 2
+  type: 1
 --- !u!212 &7115624572919819846
 SpriteRenderer:
   m_ObjectHideFlags: 0

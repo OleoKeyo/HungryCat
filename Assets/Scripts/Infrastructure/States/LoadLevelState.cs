@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
@@ -53,15 +54,15 @@ namespace AlchemyCat.Infrastructure.States
       LevelStaticData levelData = _staticDataService.ForLevel(sceneName);
       GameObject player = _gameFactory.CreatePlayer(levelData.initialPlayerPosition);
       GameObject cat = _gameFactory.CreateCat(levelData.catPosition);
-      GeneratedElements generatedElements =_levelGenerationService.Generate(levelData);
+      List<ElementType> generatedElements = _levelGenerationService.Generate(levelData.doorData.rightElementForOpen);
 
       for (int i = 0; i < levelData.crateSpawnerPositions.Count; i++)
       {
         Vector2 cratePosition = levelData.crateSpawnerPositions[i];
-        ElementType crateElement = generatedElements.elements[i];
+        ElementType crateElement = generatedElements[i];
         _gameFactory.CreateCrate(cratePosition, crateElement);
       }
-      GameObject door = _gameFactory.CreateDoor(levelData.doorPosition, levelData.levelTransferData, generatedElements.winnerType);
+      GameObject door = _gameFactory.CreateDoor(levelData.doorData.position, levelData.levelTransferData, levelData.doorData.rightElementForOpen);
       
     }
   }

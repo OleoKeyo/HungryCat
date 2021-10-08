@@ -1,9 +1,13 @@
+using System;
+
+[Flags]
 public enum ElementType
 {
-    Fire = 2,
-    Water = 3,
+    Unknown = 0,
+    Fire = 1,
+    Water = 2,
     Acid = 4,
-    FireWater = 5,
-    FireAcid = 6,
-    WaterAcid = 7
+    FireWater = Fire | Water,
+    FireAcid = Fire | Acid,
+    WaterAcid = Water| Acid
 }
