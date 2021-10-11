@@ -46,7 +46,7 @@ public class RayShoot : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.CompareTag(DoorTag))
         {
-            var door = other.GetComponent<Door>();
+            var door = other.GetComponent<DoorView>();
             door.CheckElementType(type);
             Debug.Log("DoorHit");
         }

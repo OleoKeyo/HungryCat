@@ -7,26 +7,23 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Beam : MonoBehaviour, IAttack
 {
-    private AudioSource _audio;
+    private static readonly int ScrollSpeedId = Shader.PropertyToID("_ScrollSpeed");
     
-    public float rotationSpeed = 30;
+    private AudioSource _audio;
     public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider;
     public ElementType type;
-    
+    public Vector2 scrollSpeed;
+
     private bool _triggered;
-    
+
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
         IsEnable(false);
+        spriteRenderer.material.SetVector(ScrollSpeedId, scrollSpeed);
     }
-
-    void Update()
-    {
-        transform.RotateAround(transform.position, Vector3.back, rotationSpeed * Time.deltaTime);
-    }
-
+    
     public void IsEnable(bool isEnable)
     {
         spriteRenderer.enabled = isEnable;

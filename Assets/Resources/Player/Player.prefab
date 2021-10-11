@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 7999763326651489097}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: e15692b12233a164bae61393551d8442, type: 3}
-  getFlask: {fileID: 8300000, guid: 4ca873726993ae548871aed89e1037b7, type: 3}
+  getFlask: {fileID: 8300000, guid: 07d7f3d577886a44586c372385b2ffd2, type: 3}
 --- !u!82 &7865856076175073205
 AudioSource:
   m_ObjectHideFlags: 0

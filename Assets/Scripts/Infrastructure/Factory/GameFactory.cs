@@ -59,8 +59,8 @@ namespace AlchemyCat.Infrastructure.Factory
     {
       DoorData doorData = _staticDataService.ForDoor(doorType);
       GameObject doorGo = Instantiate(AssetPath.DoorPath, at);
-      Door door = doorGo.GetComponent<Door>();
-      door.Construct(levelTransferData, this, doorType, doorData.sprite);
+      DoorView doorView = doorGo.GetComponent<DoorView>();
+      doorView.Construct(levelTransferData, this, doorType, doorData.sprite);
       DoorAudio audio = doorGo.GetComponent<DoorAudio>();
       audio.Construct(doorData.successSound, doorData.failSound);
       return doorGo;
@@ -70,7 +70,7 @@ namespace AlchemyCat.Infrastructure.Factory
     {
       GameObject levelTransferGo = Instantiate(AssetPath.LevelTransformTrigger, transferData.position, transferData.rotation);
       LevelTransferTrigger transferTrigger = levelTransferGo.GetComponent<LevelTransferTrigger>();
-      transferTrigger.TransferTo = transferData.transferTo;
+      transferTrigger.Construct(_gameStateMachine, transferData.transferTo);
       return levelTransferGo;
     }
 

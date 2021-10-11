@@ -7,7 +7,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(DoorAudio))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Door : MonoBehaviour
+public class DoorView : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
     private IGameFactory _gameFactory;
@@ -21,15 +21,11 @@ public class Door : MonoBehaviour
         _gameFactory = gameFactory;
         _levelTransferData = levelTransferData;
         _elementToOpenDoor = elementType;
+        _audio = GetComponent<DoorAudio>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = doorSprite;
     }
-
-    private void Awake()
-    {
-        _audio = GetComponent<DoorAudio>();
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(_isOpened)
