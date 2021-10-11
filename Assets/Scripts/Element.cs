@@ -14,16 +14,12 @@ public class Element : MonoBehaviour, IEquatable<Element>
     spriteRenderer.sprite = elementsConfig.GetElementSprite(ElementType);
   }
 
-  public bool Equals(Element other)
-  {
-    return ElementType == other.ElementType;
-  }
-
-  public override bool Equals(object obj)
-  {
-    return Equals((Element)obj);
-  }
-
+  public bool Equals(Element other) =>
+    ElementType == other.ElementType;
+  
+  public override bool Equals(object obj) => 
+    Equals((Element)obj);
+  
   public override int GetHashCode()
   {
     unchecked

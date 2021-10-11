@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5937739182406931417}
   - component: {fileID: 5937739182406931419}
   - component: {fileID: 4161877451779421139}
-  - component: {fileID: 4161877451627342440}
   - component: {fileID: 4789664753723562140}
-  m_Layer: 9
+  - component: {fileID: 3100987069861310289}
+  - component: {fileID: 5363091264413935627}
+  m_Layer: 10
   m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5937739182406931417}
-  levelTransferTrigger: {fileID: 0}
   doorsConfig: {fileID: 11400000, guid: 34c1c6cb44bb3024ba99dcdf166568cb, type: 2}
   successSound: {fileID: 8300000, guid: 8803b54190fa6bd4aa01ff5dc06115df, type: 3}
   failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}
@@ -129,27 +129,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.26, y: 3.14}
   m_EdgeRadius: 0
---- !u!50 &4161877451627342440
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5937739182406931416}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!82 &4789664753723562140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -246,3 +225,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &3100987069861310289
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937739182406931416}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5363091264413935627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937739182406931416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46f4f8faacf4e1dbd9768b24c90158f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  successSound: {fileID: 8300000, guid: 8803b54190fa6bd4aa01ff5dc06115df, type: 3}
+  failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}

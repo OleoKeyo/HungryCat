@@ -13,7 +13,7 @@ namespace AlchemyCat.Infrastructure.Factory
     void CreateCrate(Vector2 at, ElementType elementType);
     void CreateStartMenu();
     GameObject CreateDoor(Vector2 at, LevelTransferData levelDataLevelTransferData,
-      ElementType generatedElementsWinnerType);
+      ElementType doorType);
     GameObject CreateLevelTransformTrigger(LevelTransferData transferData);
   }
 }

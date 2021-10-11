@@ -1,4 +1,5 @@
 ﻿using System;
+using AlchemyCat.Player;
 using UnityEngine;
 
 public class RayShoot : MonoBehaviour
@@ -52,8 +53,8 @@ public class RayShoot : MonoBehaviour
         
         if (other.CompareTag(PlayerTag))
         {
-            var player = other.GetComponent<PlayerView>();
-            player.Dead();
+            var player = other.GetComponent<PlayerHealth>();
+            player.TakeDamage(type);
             Debug.Log("PlayerHit");
         }
         

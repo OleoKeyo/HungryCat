@@ -41,11 +41,11 @@ namespace AlchemyCat.Editor
       return new LevelTransferData(markerTransform.position, markerTransform.rotation, marker.transferTo);
     }
 
-    private DoorStaticData CollectDoorStaticData()
+    private DoorInitialData CollectDoorStaticData()
     {
       DoorSpawnMarker marker = FindObjectOfType<DoorSpawnMarker>();
       Vector2 position = marker.GetComponent<Transform>().position;
-      return new DoorStaticData(marker.rightElementForOpen, position);
+      return new DoorInitialData(marker.rightElementForOpen, position);
     }
   }
 }

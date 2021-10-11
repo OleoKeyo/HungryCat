@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86208f7803b140bd96a600559c9e7abc, type: 3}
+  m_Name: IceDoorConfig
+  m_EditorClassIdentifier: 
+  doorData:
+    rightElementForOpen: 1
+    sprite: {fileID: 21300000, guid: 09fd8638252d7794b916e3e635cf55d5, type: 3}
+    successSound: {fileID: 8300000, guid: e0737b93fdb857449bdbf79e3c8cd499, type: 3}
+    failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}

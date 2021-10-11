@@ -1,14 +1,21 @@
-﻿using UnityEngine;
+﻿using AlchemyCat.Player;
+using Logic;
+using UnityEngine;
 
 namespace ElementCrate
 {
-  public class Crate : MonoBehaviour
+  public class Crate : MonoBehaviour, IInteractWithInventory
   {
-    public Element element;
+    [SerializeField] private Element element;
 
     public void SetElement(ElementType generatedElement)
     {
       element.SetElement(generatedElement);
+    }
+    
+    public void Interact(PlayerInventory inventory)
+    {
+      inventory.TakeElement(element);
     }
   }
 }

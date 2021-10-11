@@ -18,8 +18,12 @@ public class BeamWeapon : MonoBehaviour
     public Transform spawnShootPoint;
 
     private List<GameObject> _availableShotsPrefab = new List<GameObject>();
-    private PlayerView _player;
     private int currentPrefabIndex;
+
+    public void Construct(Transform playerTransform)
+    {
+        _playerTransform = playerTransform;
+    }
 
     public void EnableAcidBeam() => 
         acidBeam.IsEnable(true);
@@ -52,7 +56,8 @@ public class BeamWeapon : MonoBehaviour
     }
 
     private DateTime _lastFire;
-    
+    private Transform _playerTransform;
+
     private void Update()
     {
         if(_availableShotsPrefab.Count == 0)
@@ -62,7 +67,7 @@ public class BeamWeapon : MonoBehaviour
             return;
         
         _lastFire = DateTime.Now;
-        Shoot(_player.transform.position);
+        Shoot(_playerTransform.position);
     }
 
     private void Shoot(Vector3 playerPosition)
@@ -83,9 +88,5 @@ public class BeamWeapon : MonoBehaviour
         RayShoot ray = bulletGo.GetComponent<RayShoot>();
         ray.ShootTowards(spawnShootPoint.position, playerPosition);
     }
-
-    public void SetPlayer(PlayerView player)
-    {
-        _player = player;
-    }
+    
 }

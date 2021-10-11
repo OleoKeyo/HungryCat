@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Door
-  - Beam
   - Shoot
+  - Beam
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -14,11 +14,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Interactable
-  - Cat
+  - Interact
+  - Attack
   - Player
+  - Cat
   - Door
-  - 
   - 
   - 
   - 

@@ -2,10 +2,12 @@
 using AlchemyCat.Infrastructure.AssetManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Infrastructure.States;
+using AlchemyCat.Player;
 using AlchemyCat.Services.Input;
 using AlchemyCat.UI;
 using Config;
 using ElementCrate;
+using Player;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.Factory
@@ -15,32 +17,52 @@ namespace AlchemyCat.Infrastructure.Factory
     private readonly IAssetProvider _assets;
     private readonly IInputService _inputService;
     private readonly IGameStateMachine _gameStateMachine;
-    
-    public GameFactory(IAssetProvider assets, IInputService inputService, IGameStateMachine gameStateMachine)
+    private readonly IStaticDataService _staticDataService;
+
+    private GameObject _playerGameObject { get; set; }
+
+    public GameFactory(
+      IAssetProvider assets, 
+      IInputService inputService, 
+      IGameStateMachine gameStateMachine, 
+      IStaticDataService staticDataService)
     {
       _assets = assets;
       _inputService = inputService;
       _gameStateMachine = gameStateMachine;
+      _staticDataService = staticDataService;
     }
 
     public GameObject CreatePlayer(Vector2 at)
     {
-      return Instantiate(AssetPath.PlayerPath, at);
+      _playerGameObject  = Instantiate(AssetPath.PlayerPath, at);
+      PlayerMove playerMove = _playerGameObject .GetComponent<PlayerMove>();
+      playerMove.Construct(_inputService);
+      PlayerInteract playerInteruct = _playerGameObject.GetComponent<PlayerInteract>();
+      playerInteruct.Construct(_inputService);
+      return _playerGameObject ;
     }
 
     public GameObject CreateCat(Vector2 at)
     {
-      return Instantiate(AssetPath.CatPath, at);
+      GameObject catGO = Instantiate(AssetPath.CatPath, at);
+      CatView cat = catGO.GetComponent<CatView>();
+      cat.Construct(_playerGameObject.transform);
+
+      return catGO;
     }
 
     public GameObject CreateDoor(
       Vector2 at, 
       LevelTransferData levelTransferData,
-      ElementType winnerType)
+      ElementType doorType)
     {
+      DoorData doorData = _staticDataService.ForDoor(doorType);
       GameObject doorGo = Instantiate(AssetPath.DoorPath, at);
       Door door = doorGo.GetComponent<Door>();
-      door.Construct(levelTransferData, this, winnerType);
+      door.Construct(levelTransferData, this, doorType, doorData.sprite);
+      DoorAudio audio = doorGo.GetComponent<DoorAudio>();
+      audio.Construct(doorData.successSound, doorData.failSound);
       return doorGo;
     }
 
@@ -66,22 +88,14 @@ namespace AlchemyCat.Infrastructure.Factory
       startMenu.Construct(_gameStateMachine);
     }
 
-    private GameObject Instantiate(string prefabPath, Vector2 position, Quaternion rotation)
-    {
-      GameObject gameObject = _assets.Instantiate(prefabPath, position, rotation);
-      return gameObject;
-    }
-
-    private GameObject Instantiate(string prefabPath, Vector2 position)
-    {
-      GameObject gameObject = _assets.Instantiate(prefabPath, position);
-      return gameObject;
-    }
-
-    private GameObject Instantiate(string prefabPath)
-    {
-      GameObject gameObject = _assets.Instantiate(prefabPath);
-      return gameObject;
-    }
+    private GameObject Instantiate(string prefabPath, Vector2 position, Quaternion rotation) => 
+      _assets.Instantiate(prefabPath, position, rotation);
+    
+    private GameObject Instantiate(string prefabPath, Vector2 position) =>
+      _assets.Instantiate(prefabPath, position);
+    
+    private GameObject Instantiate(string prefabPath) =>
+      _assets.Instantiate(prefabPath);
+  
   }
 }

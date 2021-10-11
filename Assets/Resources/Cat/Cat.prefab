@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
-  countdownToAttack: 1.5
   spriteRenderer: {fileID: 344774766969066516}
   boxCollider: {fileID: 8328991631833469905}
   type: 4
@@ -355,7 +354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
-  countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572851645620}
   boxCollider: {fileID: 8328991632997238512}
   type: 1
@@ -579,7 +577,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
-  countdownToAttack: 1.5
   spriteRenderer: {fileID: 7115624572919819846}
   boxCollider: {fileID: 8328991632933356574}
   type: 1
@@ -848,8 +845,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8328991632517121906}
   - component: {fileID: 3181264989638787799}
-  - component: {fileID: 8746803969194623459}
-  m_Layer: 7
+  - component: {fileID: 5455690695314662077}
+  m_Layer: 6
   m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beamWeapon: {fileID: 8328991631859944469}
---- !u!60 &8746803969194623459
+--- !u!60 &5455690695314662077
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4050631266302421280}
   m_Layer: 7
   m_Name: FireWaterBeam
-  m_TagString: Shoot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

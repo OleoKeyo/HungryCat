@@ -1,47 +1,47 @@
 using System.Collections;
+using AlchemyCat.Cat;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.Services.StaticData;
-using AlchemyCat.StaticData;
 using Config;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(DoorAudio))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Door : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
-    public DoorsConfig doorsConfig;
-    private const string BeamTag = "Beam"; 
-    private const string ShootTag = "Shoot";
-    
-    private ElementType _elementToOpenDoor;
-
-    [Header("sound properties")]
-    [SerializeField] private AudioClip successSound;
-    [SerializeField] private AudioClip failSound;
-    private AudioSource _audioSource;
-    private LevelTransferData _levelTransferData;
+    private SpriteRenderer _spriteRenderer;
     private IGameFactory _gameFactory;
+    private LevelTransferData _levelTransferData;
+    private ElementType _elementToOpenDoor;
+    private DoorAudio _audio;
     private bool _isOpened;
-
     
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
-
-    public void Construct(LevelTransferData levelTransferData, IGameFactory gameFactory, ElementType elementType)
+    public void Construct(LevelTransferData levelTransferData, IGameFactory gameFactory, ElementType elementType, Sprite doorSprite)
     {
         _gameFactory = gameFactory;
         _levelTransferData = levelTransferData;
-        SetRightDoorElement(elementType);
+        _elementToOpenDoor = elementType;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = doorSprite;
     }
 
-    private void SetRightDoorElement(ElementType element)
+    private void Awake()
     {
-        _elementToOpenDoor = element;
-        spriteRenderer.sprite = doorsConfig.GetDoorSprite(element);
+        _audio = GetComponent<DoorAudio>();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(_isOpened)
+            return;
+        IAttack attack = other.GetComponent<IAttack>();
+        if (attack != null)
+        {
+            ElementType element = attack.GetElementType();
+            CheckElementType(element);
+        }
+    }
+    
     public void CheckElementType(ElementType elementType)
     {
         if(_isOpened)
@@ -49,58 +49,32 @@ public class Door : MonoBehaviour
         
         Debug.Log($"{elementType.ToString()} {_elementToOpenDoor.ToString()}");
         if (elementType == _elementToOpenDoor)
-        {
             OpenDoor();
-            _audioSource.clip = successSound;
-        }
         else
-        {
-            _audioSource.clip = failSound;
-        }
-        _audioSource.Play();
+            OpenFail();
     }
 
     private void OpenDoor()
     {
         _isOpened = true;
+        _audio.PlaySuccess();
         StartCoroutine(FadeDoor());
     }
 
+    private void OpenFail() => 
+        _audio.PlayFail();
+
+
     private IEnumerator FadeDoor()
     {
-        while (spriteRenderer.color.a > 0)
+        while (_spriteRenderer.color.a > 0)
         {
-            Color oldColor = spriteRenderer.color;
+            Color oldColor = _spriteRenderer.color;
             Color newColor = oldColor;
             newColor.a -= 0.03f;
-            spriteRenderer.color = newColor;
+            _spriteRenderer.color = newColor;
             yield return new WaitForSeconds(0.03f);
         }
         _gameFactory.CreateLevelTransformTrigger(_levelTransferData);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(_isOpened)
-            return;
-        
-        if (other.CompareTag(BeamTag))
-        {
-            var beam = other.GetComponent<Beam>();
-            if (beam != null)
-            {
-                CheckElementType(beam.type);
-                return;
-            }
-        }
-        if (other.CompareTag(ShootTag))
-        {
-            
-            var rayShoot = other.GetComponent<RayShoot>();
-            if (rayShoot != null)
-            {
-                CheckElementType(rayShoot.type);
-            }
-        }
     }
 }

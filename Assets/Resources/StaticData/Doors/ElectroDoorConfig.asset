@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86208f7803b140bd96a600559c9e7abc, type: 3}
+  m_Name: ElectroDoorConfig
+  m_EditorClassIdentifier: 
+  doorData:
+    rightElementForOpen: 6
+    sprite: {fileID: 21300000, guid: 9a6b2c21f84ccf644b6498c91b8c807a, type: 3}
+    successSound: {fileID: 8300000, guid: 8803b54190fa6bd4aa01ff5dc06115df, type: 3}
+    failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}

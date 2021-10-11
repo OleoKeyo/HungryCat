@@ -37,7 +37,8 @@ namespace AlchemyCat.Infrastructure.States
       _services.RegisterSingle<IGameFactory>(new GameFactory(
         _services.Resolve<IAssetProvider>(),
         _services.Resolve<IInputService>(),
-        _services.Resolve<IGameStateMachine>()));
+        _services.Resolve<IGameStateMachine>(),
+        _services.Resolve<IStaticDataService>()));
       _services.RegisterSingle<ILevelGenerationService>(new LevelGenerationService());
     }
 

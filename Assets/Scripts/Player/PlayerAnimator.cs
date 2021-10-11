@@ -74,5 +74,15 @@ namespace DefaultNamespace.Player
       
       return state;
     }
+
+    public void PlayHit()
+    {
+      
+    }
+
+    public void PlayDeath()
+    {
+
+    }
   }
 }
