@@ -40,6 +40,8 @@ namespace AlchemyCat.Infrastructure.Factory
       playerMove.Construct(_inputService);
       PlayerInteract playerInteruct = _playerGameObject.GetComponent<PlayerInteract>();
       playerInteruct.Construct(_inputService);
+      PlayerDeath playerDeath = _playerGameObject.GetComponent<PlayerDeath>();
+      playerDeath.Construct(_gameStateMachine);
       return _playerGameObject ;
     }
 

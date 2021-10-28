@@ -6,6 +6,6 @@ namespace Logic
   [CreateAssetMenu (fileName = "GroundTile", menuName = "Tile/GroundTile")]
   public class GroundTile : Tile
   {
-    public int MyInt = 3;
+    public TileType type;
   }
 }

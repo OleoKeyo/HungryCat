@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6394500207993718511}
   - component: {fileID: 3839172859054413042}
   - component: {fileID: 7631911114753677973}
+  - component: {fileID: 8412522831887348587}
   m_Layer: 0
   m_Name: LockerLeft
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2293649ae4043a14d96204853fe7dece, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.54, y: 2.59}
   m_EdgeRadius: 0
+--- !u!114 &8412522831887348587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8539056780995317331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e9c5d5bd2143d797a5318246075e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 1, y: 2}
+  spriteRenderer: {fileID: 3839172859054413042}

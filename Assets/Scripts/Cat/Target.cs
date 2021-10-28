@@ -26,19 +26,19 @@ public class Target : MonoBehaviour
     {
       Color oldColor = spriteRenderer.color;
       Color newColor = oldColor;
-      newColor.a -= 0.05f;
+      newColor.a -= 0.1f;
       spriteRenderer.color = newColor;
       yield return new WaitForSeconds(0.05f);
     }
-    Destroy(gameObject);
   }
+  
   private IEnumerator FadeOut()
   {
     while (spriteRenderer.color.a < 1)
     {
       Color oldColor = spriteRenderer.color;
       Color newColor = oldColor;
-      newColor.a += 0.05f;
+      newColor.a += 0.1f;
       spriteRenderer.color = newColor;
       yield return new WaitForSeconds(0.05f);
     }

@@ -5,6 +5,7 @@ using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.StaticData;
 using LevelGeneration;
+using Logic;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
@@ -52,6 +53,7 @@ namespace AlchemyCat.Infrastructure.States
     private void InitLevel(string sceneName)
     {
       LevelStaticData levelData = _staticDataService.ForLevel(sceneName);
+
       GameObject player = _gameFactory.CreatePlayer(levelData.initialPlayerPosition);
       GameObject cat = _gameFactory.CreateCat(levelData.catPosition);
       List<ElementType> generatedElements = _levelGenerationService.Generate(levelData.doorData.rightElementForOpen);
@@ -64,6 +66,13 @@ namespace AlchemyCat.Infrastructure.States
       }
       GameObject door = _gameFactory.CreateDoor(levelData.doorData.position, levelData.levelTransferData, levelData.doorData.rightElementForOpen);
       
+      CreateWalkableArea(levelData);
+    }
+
+    private void CreateWalkableArea(LevelStaticData levelData)
+    {
+      GameTilemap gameTilemap = GameObject.FindObjectOfType<GameTilemap>();
+      gameTilemap.Construct(levelData);
     }
   }
 }

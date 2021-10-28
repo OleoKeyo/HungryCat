@@ -14,14 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelKey: Level2
   crateSpawnerPositions:
-  - {x: 4.02, y: 5.01}
-  - {x: -16.01, y: -2.85}
-  initialPlayerPosition: {x: -10.12, y: -5.78}
-  catPosition: {x: -1.96, y: -2.43}
+  - {x: -16.44, y: 1.45}
+  - {x: -16.49, y: -3.47}
+  initialPlayerPosition: {x: -11.31, y: -4.01}
+  catPosition: {x: -4.5, y: -2.77}
   doorData:
     rightElementForOpen: 6
-    position: {x: -4.25, y: -11.85}
+    position: {x: -4.02, y: -12.03}
   levelTransferData:
-    position: {x: -4.1, y: -8.8}
+    position: {x: -4.13, y: -9.13}
     rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
     transferTo: Level3
+  mapObjects:
+  - size: {x: 1, y: 1}
+    position: {x: -16.49, y: -3.47, z: -1.9070154}
+    minBounds: {x: -0.5, y: -0.5, z: -0.1}
+  - size: {x: 1, y: 1}
+    position: {x: -16.44, y: 1.45, z: -1.9070154}
+    minBounds: {x: -0.5, y: -0.5, z: -0.1}
+  - size: {x: 1, y: 1}
+    position: {x: -4.5, y: -2.77, z: 0}
+    minBounds: {x: -0.3671875, y: 0, z: -0.1}
+  - size: {x: 2, y: 1}
+    position: {x: -9.04, y: 4.4, z: 1}
+    minBounds: {x: -1, y: -0.59765625, z: -0.1}
+  - size: {x: 1, y: 1}
+    position: {x: -15.51, y: -10.91, z: 5.875808}
+    minBounds: {x: -0.45703125, y: 0, z: -0.1}
+  - size: {x: 1, y: 1}
+    position: {x: -11.41, y: 4.07, z: 5.875808}
+    minBounds: {x: -0.45703125, y: 0, z: -0.1}
+  - size: {x: 1, y: 1}
+    position: {x: 5.45, y: -10.94, z: 5.875808}
+    minBounds: {x: -0.45703125, y: 0, z: -0.1}

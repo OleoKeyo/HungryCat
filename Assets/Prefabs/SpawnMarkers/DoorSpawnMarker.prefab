@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 2291006815250161741}
-  transferTo: 
+  rightElementForOpen: 0

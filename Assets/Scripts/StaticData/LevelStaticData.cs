@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AlchemyCat.Infrastructure.Services.StaticData;
+using Logic;
 using UnityEngine;
 
 namespace AlchemyCat.StaticData
@@ -13,5 +14,6 @@ namespace AlchemyCat.StaticData
     public Vector2 catPosition;
     public DoorInitialData doorData;
     public LevelTransferData levelTransferData;
+    public List<MapObjectData> mapObjects;
   }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4294599927034631924}
   - component: {fileID: 418070626013541373}
   - component: {fileID: 160397025625163899}
+  - component: {fileID: -3454315494347198160}
   m_Layer: 0
   m_Name: CrateSpawnMarker
   m_TagString: Untagged
@@ -96,3 +97,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: 418070626013541373}
+--- !u!114 &-3454315494347198160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761725426069894991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e9c5d5bd2143d797a5318246075e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 1, y: 1}
+  spriteRenderer: {fileID: 418070626013541373}

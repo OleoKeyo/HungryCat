@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using AlchemyCat.Player;
 using Logic;
 using UnityEngine;
 
@@ -23,27 +22,36 @@ public class CatView : MonoBehaviour, IInteractWithInventory
         else CombineAttack(inventoryElements);
     }
     
-    private void ElementAttack(ElementType elementType)
+    public void ElementAttack(ElementType elementType)
     {
         switch(elementType)
         {
             case ElementType.Fire:
-                beamWeapon.EnableFireBeam();
+                beamWeapon.EnableBeamAttack(elementType);
                 break;
             case ElementType.Water:
-                beamWeapon.EnableWaterBeam();
+                beamWeapon.EnableBeamAttack(elementType);
                 break;
             case ElementType.Acid:
-                beamWeapon.EnableAcidBeam();
+                beamWeapon.EnableBeamAttack(elementType);
+                break;
+            case ElementType.FireAcid:
+                beamWeapon.EnableAoEAttack(elementType);
+                break;
+            case ElementType.FireWater:
+                beamWeapon.EnableBubbleAttack(elementType);
+                break;
+            case ElementType.WaterAcid:
+                beamWeapon.AddWaterAcidShoot();
                 break;
         }
     }
 
     private void CombineAttack(List<Element> elements)
     {
-        var fire = elements.Find(x => x.ElementType.Equals(ElementType.Fire));
-        var water = elements.Find(x => x.ElementType.Equals(ElementType.Water));
-        var acid = elements.Find(x => x.ElementType.Equals(ElementType.Acid));
+        Element fire = elements.Find(x => x.ElementType.Equals(ElementType.Fire));
+        Element water = elements.Find(x => x.ElementType.Equals(ElementType.Water));
+        Element acid = elements.Find(x => x.ElementType.Equals(ElementType.Acid));
 
         if (fire && water)
         {

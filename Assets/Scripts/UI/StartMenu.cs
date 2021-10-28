@@ -7,7 +7,7 @@ namespace AlchemyCat.UI
 {
   public class StartMenu : MonoBehaviour
   {
-    private const string FirstLevel = "Level1";
+    private const string FirstLevel = "Level2";
     
     [SerializeField] private Button _playButton;
     private IGameStateMachine _gameStateMachine;

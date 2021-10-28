@@ -99,10 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2ace0316b9b8f46a4f9f1e0f8d9eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 5937739182406931417}
-  doorsConfig: {fileID: 11400000, guid: 34c1c6cb44bb3024ba99dcdf166568cb, type: 2}
-  successSound: {fileID: 8300000, guid: 8803b54190fa6bd4aa01ff5dc06115df, type: 3}
-  failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}
 --- !u!61 &4161877451779421139
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -113,7 +109,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -127,7 +123,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.26, y: 3.14}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!82 &4789664753723562140
 AudioSource:
@@ -258,5 +254,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46f4f8faacf4e1dbd9768b24c90158f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  successSound: {fileID: 8300000, guid: 8803b54190fa6bd4aa01ff5dc06115df, type: 3}
-  failSound: {fileID: 8300000, guid: cbefaedf2e1c3ab46943830697548335, type: 3}

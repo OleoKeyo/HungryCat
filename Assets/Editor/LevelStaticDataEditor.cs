@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.SpawnMarkers;
 using AlchemyCat.StaticData;
+using Logic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,9 +31,19 @@ namespace AlchemyCat.Editor
         levelData.doorData = CollectDoorStaticData();
         levelData.levelTransferData = CollectLevelTransferData();
         levelData.initialPlayerPosition = FindObjectOfType<PlayerSpawnMarker>().GetComponent<Transform>().position;
+        levelData.mapObjects = CollectMapObjects();
       }
       
       EditorUtility.SetDirty(target);
+    }
+
+    private List<MapObjectData> CollectMapObjects()
+    {
+      MapObject[] mapObjects = FindObjectsOfType<MapObject>();
+      List<MapObjectData> mapObjectData = new List<MapObjectData>(mapObjects.Length);
+      mapObjectData.AddRange(mapObjects.Select(mapObject => new MapObjectData(mapObject.transform.position, mapObject.size, mapObject.MinBounds)));
+
+      return mapObjectData;
     }
 
     private LevelTransferData CollectLevelTransferData()

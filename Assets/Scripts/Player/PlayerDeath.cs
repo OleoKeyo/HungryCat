@@ -1,7 +1,9 @@
 ﻿using System;
+using AlchemyCat.Infrastructure.States;
 using DefaultNamespace.Player;
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AlchemyCat.Player
 {
@@ -17,6 +19,7 @@ namespace AlchemyCat.Player
     private PlayerAudio _audio;
     
     private bool _isDead;
+    private IGameStateMachine _stateMachine;
 
     private void Awake()
     {
@@ -24,6 +27,11 @@ namespace AlchemyCat.Player
       _move = GetComponent<PlayerMove>();
       _animator = GetComponent<PlayerAnimator>();
       _audio = GetComponent<PlayerAudio>();
+    }
+
+    public void Construct(IGameStateMachine stateMachine)
+    {
+      _stateMachine = stateMachine;
     }
 
     private void Start() =>
@@ -45,6 +53,8 @@ namespace AlchemyCat.Player
       _move.enabled = false;
       _animator.PlayDeath();
       _audio.PlayDeath();
+      string levelKey = SceneManager.GetActiveScene().name;
+      _stateMachine.Enter<LoadLevelState, string>(levelKey);
     }
   }
 }
