@@ -7,6 +7,7 @@ using AlchemyCat.Services.Input;
 using AlchemyCat.UI;
 using Config;
 using ElementCrate;
+using Logic;
 using Player;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace AlchemyCat.Infrastructure.Factory
     private readonly IInputService _inputService;
     private readonly IGameStateMachine _gameStateMachine;
     private readonly IStaticDataService _staticDataService;
+    private readonly IGameMapService _gameMapService;
 
     private GameObject _playerGameObject { get; set; }
 
@@ -25,12 +27,14 @@ namespace AlchemyCat.Infrastructure.Factory
       IAssetProvider assets, 
       IInputService inputService, 
       IGameStateMachine gameStateMachine, 
-      IStaticDataService staticDataService)
+      IStaticDataService staticDataService,
+      IGameMapService gameMapService)
     {
       _assets = assets;
       _inputService = inputService;
       _gameStateMachine = gameStateMachine;
       _staticDataService = staticDataService;
+      _gameMapService = gameMapService;
     }
 
     public GameObject CreatePlayer(Vector2 at)
@@ -49,7 +53,7 @@ namespace AlchemyCat.Infrastructure.Factory
     {
       GameObject catGO = Instantiate(AssetPath.CatPath, at);
       CatView cat = catGO.GetComponent<CatView>();
-      cat.Construct(_playerGameObject.transform);
+      cat.Construct(_playerGameObject.transform, _gameMapService.GetGameMap());
 
       return catGO;
     }

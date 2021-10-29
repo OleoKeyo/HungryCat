@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AlchemyCat.Cat
 {
-  public class AoEAttack : MonoBehaviour, IAttack
+  public class AoeAttack : MonoBehaviour, IAttack
   {
     public SpriteRenderer indicatorRenderer;
     public SpriteRenderer attackRenderer;

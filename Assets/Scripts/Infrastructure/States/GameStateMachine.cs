@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using AlchemyCat.Infrastructure.Factory;
 using AlchemyCat.Infrastructure.SceneManagement;
 using AlchemyCat.Infrastructure.Services.StaticData;
 using Infrastructure.Services.AllServices;
 using LevelGeneration;
+using Logic;
 
 namespace AlchemyCat.Infrastructure.States
 {
@@ -25,7 +27,8 @@ namespace AlchemyCat.Infrastructure.States
           curtain, 
           services.Resolve<IGameFactory>(), 
           services.Resolve<IStaticDataService>(), 
-          services.Resolve<ILevelGenerationService>()),
+          services.Resolve<ILevelGenerationService>(),
+          services.Resolve<IGameMapService>()),
         [typeof(GameLoopState)] = new GameLoopState(this)
       };
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6610600188046334898}
   m_Layer: 7
-  m_Name: SpawnRayShootStartPoint
+  m_Name: SpawnShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,6 +30,95 @@ Transform:
   m_Father: {fileID: 8328991632517121906}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1906699884755082496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6282983917106887797}
+  - component: {fileID: 6201609053840421543}
+  m_Layer: 0
+  m_Name: AoeWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6282983917106887797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906699884755082496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8328991632517121906}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6201609053840421543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906699884755082496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14291baf14044f1cb8c31a0642f07fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aoeAttackPrefab: {fileID: 1661887913548490784, guid: 957e9ed709bb412479a2fda8c1d4aed4, type: 3}
+--- !u!1 &6105896435529189425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7795452868822705449}
+  - component: {fileID: 5301686307586446086}
+  m_Layer: 0
+  m_Name: RayShootWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7795452868822705449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105896435529189425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8328991632517121906}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5301686307586446086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105896435529189425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dcaac8e39645ab8514948a303fd8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayShootPrefab: {fileID: 7047874886515410503, guid: 8a60caf38baa2704e9452bd6d44d5a52, type: 3}
+  spawnShootPoint: {fileID: 6610600188046334898}
 --- !u!1 &7115624571845879373
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7115624571845879374}
-  - component: {fileID: 8328991631859944469}
   - component: {fileID: 8701119533805750373}
+  - component: {fileID: 2882769366126865750}
   m_Layer: 7
   m_Name: BeamWeapon
   m_TagString: Untagged
@@ -62,25 +151,6 @@ Transform:
   m_Father: {fileID: 8328991632517121906}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8328991631859944469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115624571845879373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0f67842ce24473823ae2a7439e0c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotate: {fileID: 8701119533805750373}
-  beamPrefab: {fileID: 6557272592123060573, guid: a6dabee97a2e4dd4c86473ec1114a95f, type: 3}
-  aoeAttackPrefab: {fileID: 1661887913548490784, guid: 957e9ed709bb412479a2fda8c1d4aed4, type: 3}
-  rayAttackPrefab: {fileID: 7047874886515410503, guid: 8a60caf38baa2704e9452bd6d44d5a52, type: 3}
-  spawnShootPoint: {fileID: 6610600188046334898}
-  bubbleTargetPrefab: {fileID: 6546148261199222950, guid: d7e17b9233debb746bf367c8b194bdb2, type: 3}
-  bubbleShootPrefab: {fileID: 7687340450235352634, guid: 13f5dad3fa9f6c342ae2d56e0dd13772, type: 3}
 --- !u!114 &8701119533805750373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +164,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 20
+--- !u!114 &2882769366126865750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115624571845879373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5f114cecea420ea90c446f30ac9b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotate: {fileID: 8701119533805750373}
+  beamPrefab: {fileID: 6557272592123060573, guid: a6dabee97a2e4dd4c86473ec1114a95f, type: 3}
+--- !u!1 &7715906758161779945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5721322682907318514}
+  - component: {fileID: 4766886519966346438}
+  m_Layer: 6
+  m_Name: BubbleAttackWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5721322682907318514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715906758161779945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8328991632517121906}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4766886519966346438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715906758161779945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54d569146654eb48e4e6991f5b203aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubbleTargetPrefab: {fileID: 6546148261199222950, guid: d7e17b9233debb746bf367c8b194bdb2, type: 3}
+  bubbleShootPrefab: {fileID: 7687340450235352634, guid: 13f5dad3fa9f6c342ae2d56e0dd13772, type: 3}
+  spawnShootPoint: {fileID: 6610600188046334898}
 --- !u!1 &8328991632312693634
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +339,9 @@ Transform:
   - {fileID: 8328991632312693633}
   - {fileID: 7115624571845879374}
   - {fileID: 6610600188046334898}
+  - {fileID: 5721322682907318514}
+  - {fileID: 7795452868822705449}
+  - {fileID: 6282983917106887797}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -224,7 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4401c7b177bb143bbcf3b07b786f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beamWeapon: {fileID: 8328991631859944469}
+  rayShootWeapon: {fileID: 5301686307586446086}
+  aoeWeapon: {fileID: 6201609053840421543}
+  beamWeapon: {fileID: 2882769366126865750}
+  bubbleAttackWeapon: {fileID: 4766886519966346438}
 --- !u!60 &5455690695314662077
 PolygonCollider2D:
   m_ObjectHideFlags: 0

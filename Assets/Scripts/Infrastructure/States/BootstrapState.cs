@@ -6,6 +6,7 @@ using AlchemyCat.Infrastructure.Services.StaticData;
 using AlchemyCat.Services.Input;
 using Infrastructure.Services.AllServices;
 using LevelGeneration;
+using Logic;
 using UnityEngine;
 
 namespace AlchemyCat.Infrastructure.States
@@ -34,11 +35,13 @@ namespace AlchemyCat.Infrastructure.States
       _services.RegisterSingle<IGameStateMachine>(_stateMachine);
       _services.RegisterSingle<IInputService>(RegisterInputService());
       _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+      _services.RegisterSingle<IGameMapService>(new GameMapService());
       _services.RegisterSingle<IGameFactory>(new GameFactory(
         _services.Resolve<IAssetProvider>(),
         _services.Resolve<IInputService>(),
         _services.Resolve<IGameStateMachine>(),
-        _services.Resolve<IStaticDataService>()));
+        _services.Resolve<IStaticDataService>(),
+        _services.Resolve<IGameMapService>()));
       _services.RegisterSingle<ILevelGenerationService>(new LevelGenerationService());
     }
 

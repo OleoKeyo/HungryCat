@@ -8,6 +8,7 @@ namespace ElementCrate
     public ElementType elementType;
     
     private CatView _cat;
+    
     public void Interact(PlayerInventory inventory)
     {
       if (_cat == null)

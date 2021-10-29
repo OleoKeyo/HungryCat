@@ -1,16 +1,23 @@
 using System;
 using System.Collections.Generic;
+using AlchemyCat.Cat;
 using Logic;
 using UnityEngine;
 
 
 public class CatView : MonoBehaviour, IInteractWithInventory
 {
+    public RayShootWeapon rayShootWeapon;
+    public AoeWeapon aoeWeapon;
     public BeamWeapon beamWeapon;
+    public BubbleAttackWeapon bubbleAttackWeapon;
 
-    public void Construct(Transform playerTransform)
+    public void Construct(Transform playerTransform, GameTilemap gameTilemap)
     {
+        rayShootWeapon.Construct(playerTransform);
+        aoeWeapon.Construct(playerTransform);
         beamWeapon.Construct(playerTransform);
+        bubbleAttackWeapon.Construct(playerTransform, gameTilemap);
     }
 
     public void EatElements(List<Element> inventoryElements)
@@ -36,13 +43,13 @@ public class CatView : MonoBehaviour, IInteractWithInventory
                 beamWeapon.EnableBeamAttack(elementType);
                 break;
             case ElementType.FireAcid:
-                beamWeapon.EnableAoEAttack(elementType);
+                aoeWeapon.EnableAoEAttack(elementType);
                 break;
             case ElementType.FireWater:
-                beamWeapon.EnableBubbleAttack(elementType);
+                bubbleAttackWeapon.EnableBubbleAttack(elementType);
                 break;
             case ElementType.WaterAcid:
-                beamWeapon.AddWaterAcidShoot();
+                rayShootWeapon.EnableShoot();
                 break;
         }
     }
@@ -55,15 +62,12 @@ public class CatView : MonoBehaviour, IInteractWithInventory
 
         if (fire && water)
         {
-            beamWeapon.AddFireWaterShoot();
         }
         else if (fire && acid)
         {
-            beamWeapon.AddFireAcidShoot();
         }
         else if (water && acid)
         {
-            beamWeapon.AddWaterAcidShoot();
         }
     }
     

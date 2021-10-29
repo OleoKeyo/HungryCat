@@ -18,6 +18,7 @@ namespace AlchemyCat.Infrastructure.States
     private readonly IGameFactory _gameFactory;
     private readonly IStaticDataService _staticDataService;
     private readonly ILevelGenerationService _levelGenerationService;
+    private readonly IGameMapService _gameMapService;
     
     public LoadLevelState(
       GameStateMachine gameStateMachine, 
@@ -25,7 +26,8 @@ namespace AlchemyCat.Infrastructure.States
       LoadingCurtain curtain, 
       IGameFactory gameFactory, 
       IStaticDataService staticDataService,
-      ILevelGenerationService levelGenerationService)
+      ILevelGenerationService levelGenerationService,
+      IGameMapService gameMapService)
     {
       _gameStateMachine = gameStateMachine;
       _sceneLoader = sceneLoader;
@@ -33,6 +35,7 @@ namespace AlchemyCat.Infrastructure.States
       _gameFactory = gameFactory;
       _staticDataService = staticDataService;
       _levelGenerationService = levelGenerationService;
+      _gameMapService = gameMapService;
     }
 
     public void Enter(string sceneName)
@@ -53,6 +56,7 @@ namespace AlchemyCat.Infrastructure.States
     private void InitLevel(string sceneName)
     {
       LevelStaticData levelData = _staticDataService.ForLevel(sceneName);
+      _gameMapService.Init(Object.FindObjectOfType<GameTilemap>());
 
       GameObject player = _gameFactory.CreatePlayer(levelData.initialPlayerPosition);
       GameObject cat = _gameFactory.CreateCat(levelData.catPosition);

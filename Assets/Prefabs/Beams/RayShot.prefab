@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7978594390988398885}
   m_Layer: 7
-  m_Name: RayShotIndicator
+  m_Name: RayShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
